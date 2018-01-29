@@ -1,0 +1,5 @@
+<ng-container *ngIf="type=='required'">
+    <div *ngIf="formInfo.get(name).hasError('required') && (formInfo.get(name).touched)" class="alert alert-danger validator-danger">
+        {{title}}
+    </div>
+</ng-container>

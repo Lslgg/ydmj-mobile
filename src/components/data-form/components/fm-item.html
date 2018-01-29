@@ -1,0 +1,27 @@
+<div class="form-group label-floating is-empty formItem" [formGroup]="formInfo">
+    <ng-container *ngIf="type=='text'">
+        <ion-item>
+            <ion-label color="primary">{{title}}</ion-label>
+            <ion-input type="text" formControlName="{{name}}"></ion-input>
+        </ion-item>
+    </ng-container>
+    <ng-container *ngIf="type=='number'">
+        <ion-item>
+            <ion-label color="primary">{{title}}</ion-label>
+            <ion-input type="number" formControlName="{{name}}"></ion-input>
+        </ion-item>
+    </ng-container>
+    <ng-container *ngIf="type=='email'">
+        <ion-item>
+            <ion-label color="primary">{{title}}</ion-label>
+            <ion-input type="email" formControlName="{{name}}"></ion-input>
+        </ion-item>
+    </ng-container>
+    <ng-container *ngIf="type=='password'">
+        <ion-item>
+            <ion-label color="primary">{{title}}</ion-label>
+            <ion-input type="password" formControlName="{{name}}"></ion-input>
+        </ion-item>
+    </ng-container>
+    <ng-content></ng-content>
+</div>
