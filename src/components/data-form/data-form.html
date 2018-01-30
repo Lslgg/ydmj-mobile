@@ -1,6 +1,8 @@
 <div class="data-form">
-  <form [formGroup]="formInfo" (ngSubmit)="logForm()">
+  <form [formGroup]="formInfo" (ngSubmit)="submit()">
     <ng-content></ng-content>
-    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+    <button  ion-button block color="dark"  type="submit"  [disabled]="!formInfo.valid">
+      {{butTitle}}
+    </button>
   </form>
 </div>

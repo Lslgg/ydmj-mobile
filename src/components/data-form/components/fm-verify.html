@@ -1,5 +1,37 @@
 <ng-container *ngIf="type=='required'">
-    <div *ngIf="formInfo.get(name).hasError('required') && (formInfo.get(name).touched)" class="alert alert-danger validator-danger">
-        {{title}}
-    </div>
+    <ion-item *ngIf="formInfo.get(name).hasError('required') && 
+        (formInfo.get(name).touched)" class="verify-item">
+        {{formTitle}} 不能为空！
+    </ion-item>
+</ng-container>
+
+<ng-container *ngIf="type=='minLength'">
+    <ion-item *ngIf='formInfo.controls[name].errors?.minlength' class="verify-item">
+        {{title}}!
+    </ion-item>
+</ng-container>
+
+<ng-container *ngIf="type=='maxLength'">
+    <ion-item *ngIf='formInfo.controls[name].errors?.maxLength' class="verify-item">
+        {{title}}!
+    </ion-item>
+</ng-container>
+
+<ng-container *ngIf="type=='email'">
+    <ion-item *ngIf='formInfo.controls[name].errors?.email && 
+        (formInfo.get(name).touched)' class="verify-item">
+        {{title}}!
+    </ion-item>
+</ng-container>
+
+<ng-container *ngIf="type=='mismatch'">
+    <ion-item *ngIf='formInfo.controls[name].errors?.MatchPassword' class="verify-item">
+        {{title}}!
+    </ion-item>
+</ng-container>
+
+<ng-container *ngIf="type=='isNumber'">
+    <ion-item *ngIf='formInfo.controls[name].errors?.isNumber' class="verify-item">
+        {{title}}！
+    </ion-item>
 </ng-container>

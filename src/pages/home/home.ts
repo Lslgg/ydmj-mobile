@@ -12,5 +12,8 @@ export class HomePage {
    
   }
 
+  goClassify(){
+    this.navCtrl.push("ClassifyPage")
+  }
   
 }

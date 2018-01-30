@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <data-form [formInfo]="signupForm" [dataGql]="signupGql">
+    <fm-item name="username" title="用户名">
+      <fm-verify></fm-verify>
+    </fm-item>
+    <fm-item name="email" title="邮箱">
+      <fm-verify></fm-verify>
+      <fm-verify type="minLength" value="6" title="字数不能少于6"></fm-verify>
+    </fm-item>
+    <fm-item name="name" title="姓名">
+      <fm-verify></fm-verify>
+    </fm-item>
+    <fm-group [formInfo]="signupForm" name="pwdList">
+      <fm-item name="password" title="密码" type="password" [formInfo]="signupForm['controls']['pwdList']">
+        <fm-verify></fm-verify>
+        <fm-verify type="minLength" value="6" title="最少6个字符"></fm-verify>
+      </fm-item>
+      <fm-item name="passwordConfirm" title="确认密码" [isSaveField]="false" type="password" 
+        [formInfo]="signupForm['controls']['pwdList']">
+        <fm-verify type="mismatch" title="请输入相同的密码！"></fm-verify>
+      </fm-item>
+    </fm-group>
+  </data-form>
+</ion-content>

@@ -1,10 +1,9 @@
 import {
-    Component, OnInit, Input, EventEmitter,
-    ElementRef, AfterViewInit, Output,
-    ContentChildren, QueryList, HostBinding
+    Component, Input, EventEmitter, Output,
+    ContentChildren, QueryList
 } from '@angular/core';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { FmVerifyComponent } from './fm-verify'
 
@@ -24,8 +23,6 @@ export class FmItemComponent {
     @Input() type: string = "text";
 
     @Input() isSaveField: boolean = true;
-
-    @HostBinding('class.col-md-12') colmd12: boolean;
 
     @Input() formInfo: FormGroup;
 
@@ -63,6 +60,7 @@ export class FmItemComponent {
     ngAfterContentInit() {
         this.fmVerifyList.forEach(val => {
             val.formInfo = this.formInfo;
+            val.formTitle=this.title
             val.name = this.name;
         })
     }

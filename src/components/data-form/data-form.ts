@@ -1,16 +1,17 @@
 import {
-  Component, OnInit, Input, EventEmitter,
-  AfterViewInit, Output, ContentChildren, QueryList, Inject
+  Component, Input, EventEmitter, Output, ContentChildren, QueryList
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import gql from 'graphql-tag';
+import { FormGroup } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 
 import { FmItemComponent } from './components/fm-item';
+import { FmGroupComponent } from './components/fm-group';
+import { NavController, ToastController } from 'ionic-angular';
+
 
 @Component({
   selector: 'data-form',
-  templateUrl: 'data-from.html'
+  templateUrl: 'data-form.html'
 })
 
 export class DataFormComponent {
@@ -22,17 +23,22 @@ export class DataFormComponent {
   @Output() onSubmit = new EventEmitter<any>();
 
   //操作项
-  @Input() dataStr: FormStr;
+  @Input() dataGql: FormGql;
+
+  @Input() butTitle: string = "保存";
 
   //表单项
   @ContentChildren(FmItemComponent) flist: QueryList<FmItemComponent>;
+  @ContentChildren(FmGroupComponent) fgroup: QueryList<FmGroupComponent>;
+
 
   //表单中要保存的字段
   savefieldList: Array<string> = [];
 
   id: string;
 
-  constructor(private fb: FormBuilder, private apollo: Apollo) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController,
+    private apollo: Apollo) {
 
   }
 
@@ -47,13 +53,13 @@ export class DataFormComponent {
     this.id = "";// this.route.snapshot.params['id'];
     let val = {};
     if (this.isAuto) {
-      if (this.id) {
-        var queryInfo: any = {
-          query: this.dataStr.data,
+      if (this.id && this.dataGql.data) {
+        var query: any = {
+          query: this.dataGql.data,
           variables: { id: this.id },
           fetchPolicy: "network-only"
         };
-        var data = await this.apollo.query<{ info: any }>(queryInfo).toPromise();
+        var data = await this.apollo.query<{ info: any }>(query).toPromise();
         val = data.data.info;
       }
     }
@@ -66,25 +72,39 @@ export class DataFormComponent {
         this.savefieldList.push(p.name);
       }
     });
+
+    this.fgroup.forEach(self =>
+      self.flist.forEach(p => {
+        p.setFormVale(val);
+        //如果这个字段要保存添加到列表
+        if (p.isSaveField) {
+          this.savefieldList.push(p.name);
+        }
+      }));
   }
 
   async submit() {
     var formObj = this.formInfo.value;
     var keys = Object.keys(formObj);
     formObj = this.setInfo(keys, formObj);
-    //设置修改和添加的参数和方法id不为空为修改反之修改
+    //id不为空为修改
     if (this.id) {
       Object.assign(formObj, { id: this.id });
     }
     //自动保存
     if (this.isAuto) {
-      this.apollo.mutate({
-        mutation: this.dataStr.save,
-        variables: { info: formObj },
-        update: (proxy, { data }) => { }
-      }).subscribe(({ data }) => {
-        alert(data ? "操作成功！" : "操作失败！");
-        // this.router.navigate([this.dataStr.url]);
+      const mutate = {
+        mutation: this.dataGql.save,
+        variables: { info: formObj }
+      };
+      this.apollo.mutate(mutate).subscribe(({ data }) => {
+        const maseeage = data ? "操作成功！" : "操作失败！";
+        let toast = this.toastCtrl.create({
+          message: maseeage, showCloseButton: true,
+          duration: 2000, position: "top"
+        });
+        toast.present();
+        this.navCtrl.push(this.dataGql.url)
       })
     }
     console.log(formObj);
