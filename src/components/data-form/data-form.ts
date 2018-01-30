@@ -1,5 +1,5 @@
 import {
-  Component, Input, EventEmitter, Output, ContentChildren, QueryList
+  Component, Input, EventEmitter, Output, ContentChildren, QueryList, Inject
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
@@ -18,11 +18,11 @@ export class DataFormComponent {
 
   @Input() formInfo: FormGroup;
 
-  //是否自动
+  //是否自动保存或查找
   @Input() isAuto: boolean = true;
   @Output() onSubmit = new EventEmitter<any>();
 
-  //操作项
+  //操作项(添加，修改，查找)
   @Input() dataGql: FormGql;
 
   @Input() butTitle: string = "保存";
@@ -37,11 +37,13 @@ export class DataFormComponent {
 
   id: string;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController,
+  constructor(@Inject("utility") private utility: IUtility,
+    public navCtrl: NavController, public toastCtrl: ToastController,
     private apollo: Apollo) {
 
   }
 
+  //内容初始化完以后
   async ngAfterContentInit() {
     this.savefieldList = [];
     this.flist.forEach(self => {
@@ -73,6 +75,7 @@ export class DataFormComponent {
       }
     });
 
+    //给表单组值并且记录要保存的字段
     this.fgroup.forEach(self =>
       self.flist.forEach(p => {
         p.setFormVale(val);
@@ -107,6 +110,7 @@ export class DataFormComponent {
         this.navCtrl.push(this.dataGql.url)
       })
     }
+    
     console.log(formObj);
     this.onSubmit.emit(formObj);
   }
@@ -120,7 +124,7 @@ export class DataFormComponent {
         var info = obj[self];
         if (typeof info == "object" && info != null) {
           if (info instanceof Date) { //如果为日期
-            info = ""; //this.cdate.toDateFormat((<Date>info));
+            info = this.utility.toDateFormat((<Date>info));
           } else {
             var subKeys = Object.keys(info);
             if (subKeys.length > 0) {

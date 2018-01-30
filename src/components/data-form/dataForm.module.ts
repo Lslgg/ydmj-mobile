@@ -8,12 +8,13 @@ import { FmGroupComponent } from './components/fm-group';
 import { FmItemComponent } from './components/fm-item';
 import { FmVerifyComponent } from './components/fm-verify';
 
+
 @NgModule({
     declarations: [
         DataFormComponent,
         FmItemComponent,
         FmGroupComponent,
-        FmVerifyComponent
+        FmVerifyComponent,
     ],
     imports: [
         IonicModule,
@@ -24,7 +25,7 @@ import { FmVerifyComponent } from './components/fm-verify';
         DataFormComponent,
         FmItemComponent,
         FmGroupComponent,
-        FmVerifyComponent
+        FmVerifyComponent,
     ]
 })
 export class DataFormModule { }

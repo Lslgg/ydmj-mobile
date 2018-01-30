@@ -1,29 +1,32 @@
 import {
     Component, Input, EventEmitter, Output,
-    ContentChildren, QueryList
+    ContentChildren, QueryList, AfterViewInit, OnDestroy, ComponentFactoryResolver, ViewChild
 } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 
-import { FmVerifyComponent } from './fm-verify'
+import { FmVerifyComponent } from './fm-verify';
 
 @Component({
     selector: 'fm-item',
     templateUrl: 'fm-item.html'
 })
 
-export class FmItemComponent {
+export class FmItemComponent implements AfterViewInit {
 
+    //字段名
     @Input() name: string;
 
-    @Input() isRootClass: boolean = true;
-
+    //字段标题
     @Input() title: string;
 
+    //字段类型
     @Input() type: string = "text";
 
+    //字段是否保存
     @Input() isSaveField: boolean = true;
 
+    //表单组
     @Input() formInfo: FormGroup;
 
     @Input() dataList: Array<{ key: string, value: string }> = [];
@@ -36,11 +39,20 @@ export class FmItemComponent {
 
     @Input() editorContent = "";
 
+    @Input() verify:string;
+
     @ContentChildren(FmVerifyComponent) fmVerifyList: QueryList<FmVerifyComponent>;
 
-    constructor() {
+    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
 
     }
+
+    @ViewChild(VerifyDirective) adHost: VerifyDirective;
+
+    ngAfterViewInit() {
+     
+    }
+
 
     change(info) {
         this.onChange.emit(info.value);

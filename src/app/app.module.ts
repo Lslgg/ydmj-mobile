@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule } from 'apollo-angular';
 import { HttpLinkModule } from 'apollo-angular-link-http';
+import { Utility } from '../common/utility';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpLinkModule } from 'apollo-angular-link-http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: 'utility', useClass: Utility },
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -7,12 +7,13 @@
 </ion-header>
 
 <ion-content padding>
-  <data-form [formInfo]="loginForm" [dataGql]="loginGql" [isAuto]="false" (onSubmit)="login($event)">
-    <fm-item name="username" title="用户名">
-      <fm-verify type="required" title="请输入用户名"></fm-verify>
+  <data-form [formInfo]="loginForm" [dataGql]="loginGql" [isAuto]="false" 
+      (onSubmit)="login($event)" butTitle="登录">
+    <fm-item name="username" title="用户名" verify="required">
+      <fm-verify></fm-verify>
     </fm-item>
     <fm-item name="password" title="密码">
-      <fm-verify type="required" title="请输入密码"></fm-verify>
+      <fm-verify></fm-verify>
     </fm-item>
   </data-form>
 </ion-content>
