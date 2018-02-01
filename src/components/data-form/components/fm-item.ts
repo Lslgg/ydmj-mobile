@@ -1,6 +1,6 @@
 import {
     Component, Input, EventEmitter, Output,
-    ContentChildren, QueryList, AfterViewInit, OnDestroy, ComponentFactoryResolver, ViewChild
+    ContentChildren, QueryList, AfterViewInit
 } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
@@ -43,11 +43,10 @@ export class FmItemComponent implements AfterViewInit {
 
     @ContentChildren(FmVerifyComponent) fmVerifyList: QueryList<FmVerifyComponent>;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor() {
 
     }
 
-    @ViewChild(VerifyDirective) adHost: VerifyDirective;
 
     ngAfterViewInit() {
      

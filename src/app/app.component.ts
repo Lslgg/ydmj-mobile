@@ -19,7 +19,7 @@ export class MyApp {
 
     platform.ready().then(() => splashScreen.hide());
 
-    const grqphqlUrl = "http://localhost:8080";
+    const grqphqlUrl = "http://localhost:8081";
 
     apollo.create({
       link: createUploadLink({ uri: `${grqphqlUrl}/graphql`, credentials: "include" }),
