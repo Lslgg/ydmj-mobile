@@ -1,22 +1,8 @@
 page-home {
-    background: red;
-    .row-search{
-        input{
-            border-radius: 3px;
-            border: solid 1px rgb(196, 194, 194);
-        }
-    }
-    .rowList{
-        .col{
-            padding: 0px 3px;
-            text-align: center;
-            .card{
-                margin:5px 0px;
-                width: 100%;
-                .card-content{
-                    padding: 0px;
-                }
-            }
+    .hometopImg{
+        text-align: center;
+        img{
+            margin: auto;
         }
     }
 }

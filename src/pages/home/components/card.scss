@@ -1,0 +1,35 @@
+.rowList{
+    .col{
+        padding: 0px 4px;
+        text-align: center;
+        .card{
+            margin:5px 0px;
+            width: 100%;
+            .card-content{
+                padding: 0px;
+                img{
+                    padding:6px;
+                }
+                .bottom{ 
+                    .col{
+                        padding:0px 3px;
+                        text-align: left;
+                        span.title{
+                            display: inline-block;
+                            font-size: 16px;
+                        }
+                        span.gray{
+                            display: inline-block;
+                            color: gray;
+                            font-size: 11px;
+                        }
+                    }
+                    .total{
+                        color:red;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
