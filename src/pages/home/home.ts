@@ -11,9 +11,5 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
    
   }
-
-  goClassify(){
-    this.navCtrl.push("ClassifyPage")
-  }
   
 }

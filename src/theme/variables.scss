@@ -9,6 +9,9 @@ $colors: (
   dark:       #222
 );
 
+$toolbar-background:color($colors,primary);
+$tabs-background:color($colors,primary);
+
 @import "ionic.theme.default";
 @import "ionic.ionicons";
 @import "roboto";
