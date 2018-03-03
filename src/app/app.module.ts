@@ -11,11 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule } from 'apollo-angular';
 import { HttpLinkModule } from 'apollo-angular-link-http';
 import { Utility } from '../common/utility';
+import { PopoverPage } from '../pages/home/components/popoverPage.component';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage
+    TabsPage,
+    PopoverPage  
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { Utility } from '../common/utility';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage
+    TabsPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,

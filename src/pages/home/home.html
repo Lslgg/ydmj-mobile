@@ -5,25 +5,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col class="hometopImg">
-      <img src="assets/imgs/home/hometop.png" alt="">
-    </ion-col>
-  </ion-row>
-  <form action="" method="post">
-    <ion-grid>
-      <home-search></home-search>
-      <home-card></home-card>
-      <home-card></home-card>
-      <home-card></home-card>
-      <home-card></home-card>
-      <ion-row class="rowList">
-        <ion-col text-center>
-          <button ion-button full color="light">
-            查看更多...
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="home-slide">
+        <ion-slides pager>
+          <ion-slide style="background-color: green">
+            <img src="assets/imgs/home/hometop.png" alt="">
+          </ion-slide>
+          <ion-slide style="background-color: blue">
+            <img src="assets/imgs/home/hometop.png" alt="">
+          </ion-slide>
+          <ion-slide style="background-color: red">
+            <img src="assets/imgs/home/hometop.png" alt="">
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <home-search></home-search>
+    <home-card></home-card>
+    <home-card></home-card>
+    <home-card></home-card>
+    <home-card></home-card>
+    <ion-row class="rowList">
+      <ion-col text-center>
+        <button ion-button full color="light">
+          查看更多...
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

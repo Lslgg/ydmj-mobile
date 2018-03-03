@@ -1,6 +1,20 @@
 .row-search{
-    input{
-        border-radius: 3px;
-        border: solid 1px rgb(196, 194, 194);
+    .col {
+        // padding-top:0;
+        padding-bottom: 0;  
+        input{
+            border-radius: 3px;
+            border: solid 1px rgb(196, 194, 194);                
+            width:120px;height:27px;margin:5px 0;   
+        }      
+    }    
+}
+
+@media screen and (min-width: 1200px) {
+    .row-search>.col:last-child {
+        margin-right:50px;
+    }
+    .row-search>.col>input {
+        width:200px;
     }
 }

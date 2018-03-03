@@ -9,7 +9,7 @@ import { SearchComponent } from './components/search';
   declarations: [
     HomePage,
     CardComponent,
-    SearchComponent
+    SearchComponent,       
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
