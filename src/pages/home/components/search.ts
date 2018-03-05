@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController, ViewController } from 'ionic-angular';
-import { PopoverPage } from './popoverPage.component';
+import { SortPopover } from './sortPopover.component';
 
 
 @Component({
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     ngOnInit() { }
 
     presentPopover(myEvent) {
-        let popover = this.popoverCtrl.create(PopoverPage);
+        let popover = this.popoverCtrl.create(SortPopover);
         popover.present({
             ev: myEvent
         });

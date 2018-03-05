@@ -7,9 +7,9 @@ import { SearchComponent } from './components/search';
 
 @NgModule({
   declarations: [
-    HomePage,
+    HomePage,    
     CardComponent,
-    SearchComponent,       
+    SearchComponent,           
   ],
   imports: [
     IonicPageModule.forChild(HomePage),

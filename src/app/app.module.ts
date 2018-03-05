@@ -11,27 +11,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule } from 'apollo-angular';
 import { HttpLinkModule } from 'apollo-angular-link-http';
 import { Utility } from '../common/utility';
-import { PopoverPage } from '../pages/home/components/popoverPage.component';
+import { GoodsModule } from '../pages/goods/goods.module';
+import { SortPopover } from '../pages/home/components/sortPopover.component';
 
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
-    PopoverPage  
+    SortPopover
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
+    GoodsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     TabsPage,
-    PopoverPage
+    SortPopover
   ],
   providers: [
     StatusBar,
