@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, ViewController } from 'ionic-angular';
-import { SortPopover } from './sortPopover.component';
-
+import { PopoverController } from 'ionic-angular';
+import { SortPopover } from './sortPopover';
 
 @Component({
     selector: 'home-search',
@@ -27,7 +26,7 @@ import { SortPopover } from './sortPopover.component';
         </ion-row>
     `
 })
-export class SearchComponent implements OnInit {
+export class Search implements OnInit {
     constructor(public popoverCtrl: PopoverController) { }
 
     ngOnInit() { }
@@ -39,7 +38,4 @@ export class SearchComponent implements OnInit {
         });
     }
 }
-
-
-
 

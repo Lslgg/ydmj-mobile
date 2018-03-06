@@ -1,5 +1,5 @@
-import { Component, OnInit,Input,ContentChildren,QueryList } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component,Input,ContentChildren,QueryList } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FmItemComponent } from './fm-item';
 
 @Component({

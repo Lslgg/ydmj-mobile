@@ -1,0 +1,11 @@
+<ion-row>
+  <ion-col col-12 class="goods-slide">
+    <ion-slides pager>
+      <ng-container *ngFor="let item of dataList">
+        <ion-slide>
+          <img src="{{item}}" alt="pic">
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
+  </ion-col>
+</ion-row>

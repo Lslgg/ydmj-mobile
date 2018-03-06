@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
-import { CardComponent } from './components/card';
-import { SearchComponent } from './components/search';
+import { SearchModule } from '../../components/search-bar/search.module';
+import { CardModule } from '../../components/card/card.module';
+import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
 
 
 @NgModule({
   declarations: [
-    HomePage,    
-    CardComponent,
-    SearchComponent,           
+    HomePage,
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
+    SearchModule,
+    CardModule,
+    SlideAdModule
+  ],
+  entryComponents: [
+    HomePage,
   ],
 })
-export class HomePageModule {}
+export class HomePageModule { }

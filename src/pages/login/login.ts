@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import gql from 'graphql-tag';
@@ -51,7 +51,7 @@ export class LoginPage {
           message: '用户名或密码错误',
           showCloseButton: true,
           duration: 1000,
-          position:"top"
+          position: "top"
         });
         toast.present();
       }

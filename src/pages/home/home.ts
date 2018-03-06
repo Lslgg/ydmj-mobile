@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { Goods } from '../goods/goods';
-
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -13,8 +11,10 @@ export class HomePage {
 
   }
 
+  dataList:Array<String> = ["assets/imgs/home/hometop.png","assets/imgs/home/hometop.png","assets/imgs/home/hometop.png","assets/imgs/home/hometop.png"];
+
   onGoods() {
-    this.navCtrl.push(Goods);
+    this.navCtrl.push('Goods');
   }
 
 }

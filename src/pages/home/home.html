@@ -6,23 +6,9 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-col class="home-slide">
-        <ion-slides pager>
-          <ion-slide style="background-color: green">
-            <img src="assets/imgs/home/hometop.png" alt="">
-          </ion-slide>
-          <ion-slide style="background-color: blue">
-            <img src="assets/imgs/home/hometop.png" alt="">
-          </ion-slide>
-          <ion-slide style="background-color: red">
-            <img src="assets/imgs/home/hometop.png" alt="">
-          </ion-slide>
-        </ion-slides>
-      </ion-col>
-    </ion-row>
+    <home-slide-ad [dataList]="dataList"></home-slide-ad>    
     <home-search></home-search>
-    <home-card (onGoods)="onGoods()"></home-card>    
+    <home-card (onCard)="onGoods()"></home-card>
     <ion-row class="rowList">
       <ion-col text-center>
         <button ion-button full color="light">
