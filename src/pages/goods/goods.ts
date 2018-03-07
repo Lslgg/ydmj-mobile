@@ -9,7 +9,7 @@ import { Detail } from './components/detail';
   templateUrl: 'goods.html',
 })
 export class Goods {
-  dataList: Array<String> = ["assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png"];
+  dataList: Array<String> = ["assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg"];
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
   }
 

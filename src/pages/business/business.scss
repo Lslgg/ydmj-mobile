@@ -1,0 +1,16 @@
+.slides {
+  .slide-zoom {
+    height: 100%;
+    .ion-app.md [padding] .scroll-content {
+        padding-top:30px;
+    }
+  }
+  .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-container-horizontal>.swiper-pagination-bullets {
+      bottom: 0;
+      top: 80px;
+      right:30px;
+      left:0;
+    }
+}

@@ -12,7 +12,7 @@ export class CardComponent implements OnInit {
 
     ngOnInit() { }
 
-    clickGoods() {
+    clickCard() {
         this.onCard.emit(true);
     }
 }

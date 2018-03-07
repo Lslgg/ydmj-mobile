@@ -1,12 +1,16 @@
-<ion-header>
+<ion-content no-padding class="user-center">
+  <ion-grid no-padding>
 
-  <ion-navbar>
-    <ion-title>用户中心</ion-title>
-  </ion-navbar>
+    <user-card></user-card>
 
-</ion-header>
+    <user-order [iconName]="'heart'" [textCenter]="'我的兑换'" [textRight]="'查看全部》'" (clickBox)="onClick($event)"></user-order>
 
+    <user-icon></user-icon>
 
-<ion-content padding>
-  Hello world user
+    <user-order style="margin-top:15px;" [iconName]="'key'" [textCenter]="'常见问题'" [textRight]="'》'"></user-order>
+
+    <ion-row style="height:130px;"></ion-row>
+
+  </ion-grid>
+
 </ion-content>

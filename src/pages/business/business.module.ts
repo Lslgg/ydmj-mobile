@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { HomePage } from './home';
+import { BusinessPage } from './business';
 import { SearchModule } from '../../components/search-bar/search.module';
 import { CardModule } from '../../components/card/card.module';
-import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
 import { MoreModule } from '../../components/more/more.module';
 
 
 @NgModule({
   declarations: [
-    HomePage,
+    BusinessPage  
   ],
   imports: [
-    IonicPageModule.forChild(HomePage),
+    IonicPageModule.forChild(BusinessPage),
     SearchModule,
     CardModule,
-    SlideAdModule,
     MoreModule
   ],
-  entryComponents: [
-    HomePage,
-  ],
 })
-export class HomePageModule { }
+export class BusinessModule { }

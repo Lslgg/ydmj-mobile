@@ -1,0 +1,15 @@
+<ion-row>
+  <ion-col no-padding>
+    <ion-row class="order-row">
+      <ion-col col-2>
+        <ion-icon name="{{iconName}}"></ion-icon>
+      </ion-col>
+      <ion-col col-6>
+        <p #text>{{textCenter}}</p>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button clear item-end (click)="onClick(text.innerHTML)">{{textRight}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

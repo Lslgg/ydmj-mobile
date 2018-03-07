@@ -29,33 +29,34 @@ export class LoginPage {
   }
 
   login(user: any) {
-    const { username, password } = user;
+    // const { username, password } = user;
 
-    const loginStr = gql`
-      query($username:String!,$password:String!){
-        id:login(username:$username,password:$password){
-          id
-        }
-      }`;
+    // const loginStr = gql`
+    //   query($username:String!,$password:String!){
+    //     id:login(username:$username,password:$password){
+    //       id
+    //     }
+    //   }`;
 
-    const query = {
-      query: loginStr,
-      variables: { username, password }
-    }
+    // const query = {
+    //   query: loginStr,
+    //   variables: { username, password }
+    // }
 
-    this.apollo.query<{ id: string }>(query).subscribe(({ data }) => {
-      if (data.id) {
-        this.navCtrl.push(TabsPage)
-      } else {
-        let toast = this.toastCtrl.create({
-          message: '用户名或密码错误',
-          showCloseButton: true,
-          duration: 1000,
-          position: "top"
-        });
-        toast.present();
-      }
-    })
+    // this.apollo.query<{ id: string }>(query).subscribe(({ data }) => {
+    //   if (data.id) {
+    //     this.navCtrl.push(TabsPage)
+    //   } else {
+    //     let toast = this.toastCtrl.create({
+    //       message: '用户名或密码错误',
+    //       showCloseButton: true,
+    //       duration: 1000,
+    //       position: "top"
+    //     });
+    //     toast.present();
+    //   }
+    // })
+    this.navCtrl.push(TabsPage);
   }
 
 }

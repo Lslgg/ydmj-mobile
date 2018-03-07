@@ -1,0 +1,29 @@
+.order-row {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: .55px solid #c8c7cc;
+    height: 60px;    
+    .col {
+      text-align: center;
+      ion-icon {
+        font-size: 30px;
+        margin: 10px auto;
+        line-height: 30px;
+        color: pink;
+      }
+      p {
+        font-size: 20px;
+        line-height: 30px;
+        text-align: left;
+        margin: 10px auto;
+      }
+      button {
+        font-size: 16px;
+        color: #c0c0c0;
+        cursor: pointer;
+        height: 30px;
+        margin: 10px auto;      
+        text-align: center;      
+      }
+    }
+  }

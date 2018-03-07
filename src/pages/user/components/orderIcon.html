@@ -1,0 +1,24 @@
+<ion-row>
+  <ion-col no-padding>
+    <ion-row class="order-icon">
+      <ion-col>
+        <div>
+          <ion-icon name="heart" (click)="onClick(text.innerHTML)"></ion-icon>
+          <p #text>未兑换</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-icon name="heart" (click)="onClick(text.innerHTML)"></ion-icon>
+          <p>已兑换</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-icon name="heart" (click)="onClick(text.innerHTML)"></ion-icon>
+          <p>已过期</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

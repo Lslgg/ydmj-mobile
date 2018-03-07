@@ -14,6 +14,8 @@ import { Utility } from '../common/utility';
 import { HomePageModule } from '../pages/home/home.module';
 import { GoodsModule } from '../pages/goods/goods.module';
 import { ClassifyPageModule } from '../pages/classify/classify.module';
+import { BusinessModule } from '../pages/business/business.module';
+import { ListPageModule } from '../pages/list/list.module';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { ClassifyPageModule } from '../pages/classify/classify.module';
     IonicModule.forRoot(MyApp),
     HomePageModule,
     GoodsModule,
-    ClassifyPageModule
+    ClassifyPageModule,
+    BusinessModule,
+    ListPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -4,6 +4,7 @@ import { ClassifyPage } from './classify';
 import { SearchModule } from '../../components/search-bar/search.module';
 import { CardModule } from '../../components/card/card.module';
 import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
+import { MoreModule } from '../../components/more/more.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
     IonicPageModule.forChild(ClassifyPage),
     SearchModule,
     CardModule,
-    SlideAdModule
+    SlideAdModule,
+    MoreModule
   ],
 })
 export class ClassifyPageModule { }
