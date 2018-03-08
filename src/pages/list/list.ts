@@ -13,10 +13,14 @@ export class ListPage implements OnInit {
 
     showAlert() {
         let alert = this.alertCtrl.create({
-            title: 'New Friend!',
-            subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+            title: '兑换详情',
+            subTitle: '商品名：可乐<br/>兑换时间：tet<br/>过期时间：test<br/>状态：test<br/>兑换码：test',
             buttons: ['OK']
         });
         alert.present();
+    }
+
+    showDetail() {
+        this.showAlert();
     }
 }

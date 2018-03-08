@@ -1,24 +1,19 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ImagesPage } from './page/images';
 
 
 @IonicPage()
 @Component({
-  selector: 'page-business',
-  templateUrl: 'business.html',
+  selector: 'page-images',
+  templateUrl: 'images.html',
 })
-export class BusinessPage {
+export class ImagesPage {
   dataList: Array<String> = ["assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg", "assets/imgs/welcome.jpg"];
-  constructor(public navCtrl: NavController) {
+  constructor() {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClassifyPage');
-  }
-
-  toImages() {
-    this.navCtrl.push(ImagesPage);
   }
 
 }

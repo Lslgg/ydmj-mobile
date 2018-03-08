@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BusinessPage } from '../business/business';
 
 
 @IonicPage()
@@ -17,7 +18,7 @@ export class ClassifyPage {
   }
 
   clickCard() {
-    this.navCtrl.push("BusinessPage");
+    this.navCtrl.push(BusinessPage);
   }
 
 }

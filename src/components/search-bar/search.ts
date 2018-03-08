@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { SortPopover } from './sortPopover';
 
@@ -9,10 +9,10 @@ import { SortPopover } from './sortPopover';
             <ion-col>            
                 <ion-row  class="row-search" justify-content-end>
                     <ion-col col-auto>                                    
-                        <input type="text">                     
+                        <input type="text" #text>                     
                     </ion-col>                    
                     <ion-col col-auto style="padding-left:0;">        
-                        <button ion-button icon-only small (click)="presentPopover($event)">
+                        <button ion-button icon-only small (click)="doSearch(text.value)">
                             <ion-icon name="search"></ion-icon>                            
                         </button>
                     </ion-col>
@@ -27,15 +27,33 @@ import { SortPopover } from './sortPopover';
     `
 })
 export class Search implements OnInit {
+
+    @Input() sortList: Array<String> = [];
+
+    @Input() title: String = '';
+
+    @Output() onSort = new EventEmitter<String>();
+
+    @Output() onSearch = new EventEmitter<String>();
+
     constructor(public popoverCtrl: PopoverController) { }
 
     ngOnInit() { }
 
     presentPopover(myEvent) {
-        let popover = this.popoverCtrl.create(SortPopover);
+        let popover = this.popoverCtrl.create(SortPopover, { sortList: this.sortList, title: this.title });
         popover.present({
-            ev: myEvent
+            ev: myEvent,
         });
+        popover.onDidDismiss((data, role) => {
+            if (data && data.data) {
+                this.onSort.emit(data.data);
+            }
+        });
+    }
+
+    doSearch(info: String) {
+        this.onSearch.emit(info);
     }
 }
 

@@ -1,15 +1,13 @@
-import { ViewController } from "ionic-angular";
-import { Component } from "@angular/core";
+import { ViewController, NavParams } from "ionic-angular";
+import { Component, Output, EventEmitter } from "@angular/core";
 
 @Component({
     template: `
       <ion-list>
-        <ion-list-header>排序方式</ion-list-header>
-        <button ion-item (click)="close()">综合排序</button>
-        <button ion-item (click)="close()">积分由高到低</button>
-        <button ion-item (click)="close()">积分有低到高</button>        
-        <button ion-item (click)="close()">销量由高到低</button>
-        <button ion-item (click)="close()">销量由低到高</button>        
+        <ion-list-header>{{title}}</ion-list-header>
+        <ng-container *ngFor="let item of sortList;">
+            <button ion-item (click)="close(item)">{{item}}</button>        
+        </ng-container>        
       </ion-list>
       `,
     styles: [`         
@@ -20,9 +18,23 @@ import { Component } from "@angular/core";
 
 })
 export class SortPopover {
-    constructor(public viewCtrl: ViewController) { }
 
-    close() {
-        this.viewCtrl.dismiss();
+    sortList: Array<String> = [];
+    title: String = '排序方式';
+
+
+    constructor(public viewCtrl: ViewController, public params: NavParams) {
+        if (this.params.data.sortList) {
+            this.sortList = this.params.data.sortList;
+        }
+        if (this.params.data.title && this.params.data.title != '') {
+            this.title = this.params.data.title;
+        }
+    }
+
+    close(info: String) {
+        if (info) {
+            this.viewCtrl.dismiss({ data: info });
+        }
     }
 }

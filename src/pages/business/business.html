@@ -1,5 +1,4 @@
 <ion-slides pager>
-
   <ion-slide>
     <ion-header>
       <ion-navbar>
@@ -10,7 +9,7 @@
       <ion-grid no-padding>
         <ion-row>
           <ion-col>
-            <home-search></home-search>
+            <home-search [title]="'商品类别'"></home-search>
             <home-card></home-card>
           </ion-col>
         </ion-row>
@@ -26,8 +25,44 @@
         <ion-title text-center>商家详情</ion-title>
       </ion-navbar>
     </ion-header>
-    <ion-content padding>
-      <h2>Slide 2</h2>
+    <ion-content no-padding>
+      <ion-card class="detail-card">
+        <img src="assets/imgs/home/nin-live.png" />
+        <ion-card-content text-left class="content">
+          <ion-card-title text-center>
+            美宜佳
+          </ion-card-title>
+          <p>地址:test</p>
+          <p>地址:test</p>
+          <p>地址:test</p>
+          <p>地址:test</p>
+
+          <ion-row class="row" no-padding>
+            <ion-col class="col" text-right>
+              <button clear color="danger" icon-start ion-button small class="disable-hover button button-ios button-clear button-clear-ios button-small button-small-ios button-clear-ios-danger">
+                <span class="button-inner">
+                  <ion-icon name="share-alt" role="img" class="icon icon-ios ion-ios-share-alt" aria-label="share alt"></ion-icon>
+                  分享
+                </span>
+                <div class="button-effect"></div>
+              </button>
+            </ion-col>
+            <ion-col class="col" text-center>
+            </ion-col>
+            <ion-col class="col" (click)="toImages()">
+              <button clear color="danger" icon-start ion-button small class="disable-hover button button-ios button-clear button-clear-ios button-small button-small-ios button-clear-ios-danger">
+                <span class="button-inner">
+                  <ion-icon name="image" role="img" class="icon icon-ios ion-ios-star" aria-label="img"></ion-icon>
+                  更多
+                </span>
+                <div class="button-effect"></div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card-content>
+      </ion-card>
+
     </ion-content>
   </ion-slide>
 
