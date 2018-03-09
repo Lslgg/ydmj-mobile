@@ -6,8 +6,8 @@
 
 <ion-content>
   <ion-grid>
-    <home-slide-ad [dataList]="dataList"></home-slide-ad>    
-    <home-search [sortList]="sortList"></home-search>
+    <home-slide-ad [dataList]="adList"></home-slide-ad>
+    <home-search [sortList]="sortList" (onSort)="onSort($event)" (onSearch)="onSearch($event)"></home-search>
     <home-card (onCard)="onGoods()"></home-card>
     <home-more></home-more>
   </ion-grid>

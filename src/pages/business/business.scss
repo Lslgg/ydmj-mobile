@@ -19,6 +19,39 @@ page-business {
       left: 0;
     }
     .detail-card {
+      @media screen and (min-width: 0) and (max-width: 767px) {
+        .iimg {
+          height: 180px;
+          width: 100%;
+          img {
+            padding: 6px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      @media screen and(min-width: 768px) and (max-width: 992px) {
+        .iimg {
+          height: 210px;
+          width: 100%;
+          img {
+            padding: 6px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      @media screen and(min-width: 1200px) {
+        .iimg {
+          height: 320px;
+          width: 100%;
+          img {
+            padding: 6px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
       .content {
         p {
           border-bottom: 1px solid #c0c0c0;

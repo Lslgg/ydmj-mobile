@@ -36,7 +36,7 @@ import { NavPageModule } from '../pages/nav/nav.module';
     ClassifyPageModule,
     BusinessModule,
     ListPageModule,
-    NavPageModule,
+    NavPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
