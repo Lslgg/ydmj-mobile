@@ -1,9 +1,9 @@
 <ion-row>
   <ion-col class="home-slide">
     <ion-slides pager>
-      <ng-container *ngFor="let item of dataList">
+      <ng-container *ngFor="let item of adList">
         <ion-slide>
-          <ion-img style="width:100%;" src="{{item}}" alt="pic"></ion-img>
+          <ion-img style="width:100%;" src="http://localhost:8080/{{item.Images[0].path}}" alt="pic"></ion-img>
         </ion-slide>
       </ng-container>
     </ion-slides>

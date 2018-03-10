@@ -1,17 +1,21 @@
 <ion-row class="rowList">
-  <ion-col col-12>
-    <ion-card>
-      <ion-card-content (click)="clickCard()">
-        <ion-img src="assets/imgs/home/nin-live.png"></ion-img>
-        <ion-row class="bottom">
-          <ion-col col-12>
-            <span [style.width]="'100%'" class="title" text-center>麻辣火锅</span>
-          </ion-col>
-          <ion-col>
-            <span class="gray">欢乐餐厅</span>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
+  <ng-container *ngFor="let item of dataList">
+    <ion-col col-12>
+      <ion-card>
+        <ion-card-content (click)="clickCard(item.id)">
+          <div>
+              <img src="http://localhost:8080/{{item.Images[0].path}}">
+          </div>          
+          <ion-row class="bottom">
+            <ion-col col-12>
+              <span [style.width]="'100%'" class="title" text-center>{{item.name}}</span>
+            </ion-col>
+            <ion-col>
+              <span class="gray">{{item.times}}人兑换</span>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ng-container>
 </ion-row>

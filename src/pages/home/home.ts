@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Goods } from '../goods/goods';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -10,69 +11,92 @@ import gql from 'graphql-tag';
 export class HomePage {
 
   constructor(public navCtrl: NavController, private apollo: Apollo) {
-    this.getGoodsList("", "");
+    this.getGoodsList();    
   }
   sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
-  adList: Array<String> = ["assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png", "assets/imgs/home/hometop.png"];
-  goodsList: Array<{ name: String, Business: { name: String }, times: Number, score: Number }> = [];
-  pageSize: Number = 10;
+  goodsList: Array<{ id: String, name: String, Business: { name: String }, times: Number, score: Number, Images: { path: String } }> = [];
+  pageSize: Number = 2;
   pageIndex: Number = 1;
+  sort: any = null;
+  search: String = null;
 
-  onGoods() {
-    this.navCtrl.push('Goods');
+  onGoods(info: String) {
+    this.navCtrl.push(Goods, {
+      id: info
+    });
   }
+  
 
-  getGoodsList(search: String, sort: any) {
+  getGoodsList() {
 
-    console.log(search);
-
-    if (!search) {
-      search = '';
+    if (!this.search) {
+      this.search = '';
     }
-    if (!sort || sort=='') {
-      sort = {sortIndex: 1};
+
+    if (!this.sort) {
+      this.sort = { sortIndex: -1 };
     }
 
     const sql = gql`
       query($pageIndex:Int,$pageSize:Int,$goods:searchGoods,$sort:sortObj){
         goodsList:  getGoodsPageM(pageIndex:$pageIndex,pageSize:$pageSize,goods:$goods,sort:$sort) {
-          id,name,Business{name},times,score
+          id,name,Business{name},times,score, Images{path}
         }
       }`;
 
     var query: any = {
       query: sql,
-      variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, goods: { name: search }, sort: sort },
-      fetchPolicy: "network-only",
+      variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, goods: { name: this.search, isValid: true }, sort: this.sort },
     }
-    type goods = Array<{ name: String, Business: { name: String }, times: Number, score: Number }>;
+
+    type goods = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: { path: String } }>;
+
     this.apollo.query<goods>(query).subscribe(({ data }) => {
-      console.log(data);
+      if (data && data['goodsList']) {
+        for (let i = 0; i < data['goodsList'].length; i++) {
+          this.goodsList.push(data['goodsList'][i]);
+        }
+      }
     })
   }
 
   onSort(info: String) {
-    var sort:any = {};    
-    if (info == "综合排序") {
-      sort = { sortIndex: -1 };
-    }
-    if (info == "积分由高到低") {
-      sort = { score: 1 };
-    }
-    if (info == "积分由低到高") {
-      sort = { score: -1 };
-    }
-    if (info == "销量由高到低") {
-      sort = { sortIndex: 1 };
-    }
-    if (info == "销量由低到高") {
-      sort = { sortIndex: 1 };
-    }
-    this.getGoodsList("", sort);
+    var sort = this.getSortObj(info);
+    this.search = null;
+    this.pageIndex = 1;
+    this.goodsList = [];
+    this.getGoodsList();
   }
 
   onSearch(info: String) {
-    this.getGoodsList(info, "");
+    this.search = info;
+    this.sort = null;
+    this.pageIndex = 1;
+    this.goodsList = [];
+    this.getGoodsList();
+  }
+
+  onMore() {
+    this.pageIndex = parseInt(this.pageIndex + '') + 1;
+    this.getGoodsList();
+  }
+
+  getSortObj(info: String) {
+    if (info == "综合排序") {
+      this.sort = { sortIndex: -1 };
+    }
+    if (info == "积分由高到低") {
+      this.sort = { score: -1 };
+    }
+    if (info == "积分由低到高") {
+      this.sort = { score: 1 };
+    }
+    if (info == "销量由高到低") {
+      this.sort = { times: -1 };
+    }
+    if (info == "销量由低到高") {
+      this.sort = { times: 1 };
+    }
   }
 
 }

@@ -6,28 +6,13 @@
 
 <ion-content class="card-background-page">
 
-  <ion-card>
-    <ion-img style="width:100%;height:120px" src="assets/imgs/home/nin-live.png"></ion-img>
-    <div class="card-title">São Paulo</div>
-    <div class="card-subtitle">41 Listings</div>
-  </ion-card>
+  <ng-container *ngFor="let item of imgs">
+    <ion-card>
+      <ion-img style="width:100%;height:120px" src="http://localhost:8080/{{item.path}}"></ion-img>
+      <div class="card-title">São Paulo</div>
+      <div class="card-subtitle">41 Listings</div>
+    </ion-card>
+  </ng-container>
 
-  <ion-card>
-    <ion-img  src="assets/imgs/home/nin-live.png"></ion-img>
-    <div class="card-title">Amsterdam</div>
-    <div class="card-subtitle">64 Listings</div>
-  </ion-card>
-
-  <ion-card>
-    <ion-img src="assets/imgs/home/nin-live.png"></ion-img>
-    <div class="card-title">San Francisco</div>
-    <div class="card-subtitle">72 Listings</div>
-  </ion-card>
-
-  <ion-card>
-    <ion-img src="assets/imgs/home/nin-live.png"></ion-img>
-    <div class="card-title">Madison</div>
-    <div class="card-subtitle">28 Listings</div>
-  </ion-card>
 
 </ion-content>

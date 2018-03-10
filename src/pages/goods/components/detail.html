@@ -8,8 +8,45 @@
     <ion-list-header class="title">
       产品参数
     </ion-list-header>
-    <ion-item><span>test:</span>testssstestssstestssstestssstestssstestssstestsss</ion-item>
-    <ion-item><span>test:</span>testsss</ion-item>
-    <ion-item><span>test:</span>testsss</ion-item>
+    <ion-item>
+      <span>商品名:</span>
+      <span>{{goods.name}}</span>
+    </ion-item>
+    <ion-item>
+      <span>商品类别:</span>
+      <span>{{goods.GoodsType.name}}</span>
+    </ion-item>
+    <ion-item>
+      <span>商家:</span>
+      <span>{{goods.Business.name}}</span>
+    </ion-item>
+    <ion-item>
+      <span>商家地址:</span>
+      <span>{{goods.Business.address}}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+    </ion-item>
+    <ion-item>
+      <span>积分:</span>
+      <span>{{goods.score}}</span>
+    </ion-item>
+    <ion-item>
+      <span>兑换规则:</span>
+      <span>{{goods.ruler}}</span>
+    </ion-item>
+    <ion-item>
+      <span>商家解释:</span>
+      <span>{{goods.explain}}</span>
+    </ion-item>
+    <ion-item>
+      <span>库存:</span>
+      <span>{{goods.stock}}</span>
+    </ion-item>
+    <ion-item>
+      <span>兑换次数:</span>
+      <span>{{goods.times}}</span>
+    </ion-item>
+    <ion-item>
+      <span>有效时间:</span>
+      <span>{{goods.validTime}}</span>
+    </ion-item>
   </ion-list>
 </ion-content>

@@ -6,9 +6,9 @@
 
 <ion-content>
   <ion-grid>
-    <home-slide-ad [dataList]="dataList"></home-slide-ad>
-    <home-search></home-search>
-    <home-card-business (onCard)="clickCard()"></home-card-business>
-    <home-more></home-more>
+    <home-slide-ad type="商家页面广告"></home-slide-ad>
+    <home-search [sortList]="sortList" (onSort)="onSort($event)" (onSearch)="onSearch($event)"></home-search>
+    <home-card-business (onCard)="clickCard($event)" [dataList]="businessList"></home-card-business>
+    <home-more (onMore)="onMore()"></home-more>
   </ion-grid>
 </ion-content>

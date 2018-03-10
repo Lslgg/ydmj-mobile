@@ -1,7 +1,6 @@
 .info-list {
   .title {
-    font-size: 17px;
-    // font-weight: bold;
+    font-size: 17px; // font-weight: bold;
     color: #051b28;
   }
   .label {
@@ -11,10 +10,22 @@
   }
   ion-label {
     word-wrap: auto;
-    white-space:normal;
-  }
-  span {
-    color: #787878;
-    margin-right:10px;
+    white-space: normal;
+    vertical-align: middle;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+    span:first-child {
+      color: #787878;
+      width: 30%;
+      max-width: 80px;
+    }
+    span:last-child {
+      text-indent: 10px;
+      width: 68%;
+    }
   }
 }

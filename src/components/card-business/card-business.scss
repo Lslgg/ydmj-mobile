@@ -9,7 +9,7 @@ home-card-business {
         .card-content {
           padding: 0px;
           @media screen and (min-width: 0) and (max-width: 767px) {
-            ion-img {
+            div {
               height: 200px;
               width: 100%;
               img {
@@ -20,7 +20,7 @@ home-card-business {
             }
           }
           @media screen and(min-width: 768px) and (max-width: 992px) {
-            ion-img {
+            div {
               height: 300px;
               width: 100%;
               img {
@@ -31,7 +31,7 @@ home-card-business {
             }
           }
           @media screen and(min-width: 1200px) {
-            ion-img {
+            div {
               height: 500px;
               width: 100%;
               img {

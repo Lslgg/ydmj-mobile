@@ -9,11 +9,11 @@
       <ion-grid no-padding>
         <ion-row>
           <ion-col>
-            <home-search [title]="'商品类别'"></home-search>
-            <home-card></home-card>
+            <home-search [sortList]="sortList" (onSort)="onSort($event)" (onSearch)="onSearch($event)"></home-search>
+            <home-card [dataList]="goodsList" (onCard)="onGoods($event)"></home-card>
           </ion-col>
         </ion-row>
-        <home-more></home-more>
+        <home-more (onMore)="onMore()"></home-more>
       </ion-grid>
     </ion-content>
   </ion-slide>
@@ -26,15 +26,15 @@
     </ion-header>
     <ion-content no-padding>
       <ion-card class="detail-card">
-        <ion-img class="iimg" src="assets/imgs/home/nin-live.png"></ion-img>
+        <ion-img class="iimg" src="{{business.Images[0].path}}"></ion-img>
         <ion-card-content text-left class="content">
           <ion-card-title text-center>
-            美宜佳
+            {{business.name}}
           </ion-card-title>
-          <p>地址:test</p>
-          <p>地址:test</p>
-          <p>地址:test</p>
-          <p>地址:test</p>
+          <p>地址:{{business.name}}</p>
+          <p>电话:{{business.name}}</p>
+          <p>营业时间:{{business.name}}</p>
+          <p>商家简介:{{business.name}}</p>
           <ion-row class="row" no-padding>
             <ion-col class="col" text-right>
               <button clear color="danger" icon-start ion-button small class="disable-hover button button-ios button-clear button-clear-ios button-small button-small-ios button-clear-ios-danger">

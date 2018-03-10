@@ -10,4 +10,8 @@ export class MoreComponent implements OnInit {
 
     ngOnInit() { }
 
+    more() {
+        this.onMore.emit(true);
+    }
+
 }

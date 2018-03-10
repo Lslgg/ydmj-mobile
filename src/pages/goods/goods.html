@@ -8,20 +8,24 @@
   <ion-grid class="slide-grid">
     <home-slide-goods [dataList]="dataList"></home-slide-goods>
     <ion-row>
-      <ion-col class="goods-name">可乐</ion-col>
+      <ion-col class="goods-name">{{goods.name}}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="price">8000积分</ion-col>
+      <ion-col class="price">{{goods.score}}积分</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="ntext">月销量：800</ion-col>
-      <ion-col class="ntext">英德市建设路300号英德市建设路300号英德市建设路300号英德市建设路300号</ion-col>
+      <ion-col class="ntext">月销量：{{goods.times}}</ion-col>
+      <ion-col class="ntext">{{goods.Business.address}}</ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12 class="warning">
-        <ion-icon name="star"></ion-icon>只在周末使用</ion-col>
+        <ion-icon name="star"></ion-icon>库存：{{goods.stock}}</ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col col-12 class="warning">
-        <ion-icon name="star"></ion-icon>兑换后48小时内有效</ion-col>
+        <ion-icon name="star"></ion-icon>{{goods.ruler}}</ion-col>
+      <ion-col col-12 class="warning">
+        <ion-icon name="star"></ion-icon>兑换后{{goods.validTime}}天内有效</ion-col>
       <br/>
       <br/>
       <br/>

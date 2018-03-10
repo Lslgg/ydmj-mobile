@@ -5,13 +5,16 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
     templateUrl: 'card-business.html'
 })
 export class CardBusinessComponent implements OnInit {
-    @Output() onCard = new EventEmitter<boolean>();
-    @Input() dataList: Array<{ goodsName: String, businessName: String, times: String, score: String }> = [];    
+    @Output() onCard = new EventEmitter<String>();
+    @Input() dataList: Array<{
+        id: String, name: String, address: String, phone: String, hour: String,
+        brief: String, Images: { path: String }, times: Number, score: Number
+    }> = [];
     constructor() { }
 
     ngOnInit() { }
 
-    clickCard() {
-        this.onCard.emit(true);
+    clickCard(info:String) {
+        this.onCard.emit(info);
     }
 }
