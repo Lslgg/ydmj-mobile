@@ -9,7 +9,7 @@ home-card {
         .card-content {
           padding: 0px;
           @media screen and (min-width: 0) and (max-width: 767px) {
-            div {
+            .imgbox {
               height: 120px;
               width: 100%;
               img {
@@ -20,7 +20,7 @@ home-card {
             }
           }
           @media screen and(min-width: 768px) and (max-width: 992px) {
-            div {
+            .imgbox {
               height: 200px;
               width: 100%;
               img {
@@ -31,7 +31,7 @@ home-card {
             }
           }
           @media screen and(min-width: 1200px) {
-            div {
+            .imgbox {
               height: 300px;
               width: 100%;
               img {

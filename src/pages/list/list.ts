@@ -57,11 +57,11 @@ export class ListPage implements OnInit {
         type transaction = { id: String, code: String, Goods: { name: String }, Business: { name: String }, User: { username: String }, state: Number, endTime: Date, createAt: Date };
         this.apollo.query<transaction>(query).subscribe(({ data }) => {
             if (data && data['transaction']) {
-                let name = '';
+                let name = data['transaction'].Goods.name;
                 let time = '';
                 let endTime = '';
-                let state = '';
-                let code = data['transaction'].code;
+                let state = '';                
+                let code = data['transaction'].code;                
                 let date = new Date(data['transaction'].createAt);
                 time = date.toLocaleDateString() + date.toLocaleTimeString();
                 let endDate = new Date(data['transaction'].endTime);
@@ -90,7 +90,7 @@ export class ListPage implements OnInit {
         }
         const sql = gql`
         query($pageIndex:Int,$pageSize:Int,$transaction:searchTransaction) {
-            transactionList:getTransactionPage(pageSize:$pageSize,pageIndex:$pageIndex,transaction:$transaction) {
+            transactionList:getTransactionPageM(pageSize:$pageSize,pageIndex:$pageIndex,transaction:$transaction) {
                 id Goods{name} createAt endTime state
             } 
         }`;

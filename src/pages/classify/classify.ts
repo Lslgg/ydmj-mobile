@@ -11,8 +11,9 @@ import { Apollo } from 'apollo-angular';
   templateUrl: 'classify.html',
 })
 export class ClassifyPage implements OnInit {
-
-  sortList: Array<String> = ["综合排序", "销量由高到低", "销量由低到高"];
+  
+  sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "销量由高到低", value: "销量由高到低" },
+  { key: "销量由低到高", value: "销量由低到高" }];
 
   businessList: Array<{
     id: String, name: String, address: String, phone: String, hour: String,
@@ -34,7 +35,7 @@ export class ClassifyPage implements OnInit {
     this.getBusinessList();
   }
 
-  clickCard(info: String) {    
+  clickCard(info: String) {
     this.navCtrl.push(BusinessPage, {
       id: info,
     });
@@ -75,7 +76,7 @@ export class ClassifyPage implements OnInit {
   }
 
   onSort(info: String) {
-    var sort = this.getSortObj(info);
+    this.getSortObj(info);
     this.search = null;
     this.pageIndex = 1;
     this.businessList = [];

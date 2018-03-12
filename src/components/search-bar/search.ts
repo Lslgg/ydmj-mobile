@@ -28,7 +28,7 @@ import { SortPopover } from './sortPopover';
 })
 export class Search implements OnInit {
 
-    @Input() sortList: Array<String> = [];
+    @Input() sortList: Array<{ key: String, value: String }> = [];
 
     @Input() title: String = '';
 

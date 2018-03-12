@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     @media screen and (min-width: 0) and (max-width: 767px) {
-      ion-img {
+      .imgbox {
         height: 360px;
         width: 100%;
         img {
@@ -15,7 +15,7 @@
       }
     }
     @media screen and(min-width: 768px) and (max-width: 992px) {
-      ion-img {
+      .imgbox {
         height: 450px;
         width: 100%;
         img {
@@ -25,7 +25,7 @@
       }
     }
     @media screen and(min-width: 1200px) {
-      ion-img {
+      .imgbox {
         height: 850px;
         width: 100%;
         img {

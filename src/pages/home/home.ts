@@ -10,7 +10,8 @@ import { Goods } from '../goods/goods';
 })
 export class HomePage {
 
-  sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
+  sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "积分由高到低", value: "积分由高到低" },
+  { key: "积分由低到高", value: "积分由低到高" }, { key: "销量由高到低", value: "销量由高到低" }, { key: "销量由低到高", value: "销量由低到高" }];
 
   goodsList: Array<{
     id: String, name: String, Business: { name: String },
@@ -77,7 +78,7 @@ export class HomePage {
   }
 
   onSort(info: String) {
-    var sort = this.getSortObj(info);
+    this.getSortObj(info);
     this.search = null;
     this.pageIndex = 1;
     this.goodsList = [];
