@@ -5,14 +5,10 @@
 </ion-header>
 <ion-content>
   <ion-list lines>
-    <button ion-item (click)="itemSelected()">
-      test
-    </button>
-    <button ion-item (click)="itemSelected()">
-      test
-    </button>
-    <button ion-item (click)="itemSelected()">
-      test
-    </button>
+    <ng-container *ngFor="let item of answerList;">
+      <button ion-item (click)="itemSelected(item.id)">
+        {{item.name}}
+      </button>
+    </ng-container>
   </ion-list>
 </ion-content>

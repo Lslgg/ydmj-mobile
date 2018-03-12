@@ -6,13 +6,15 @@
 
 <ion-content>
   <ion-list class="order-list">
-    <ion-item class="list-item" (click)="showDetail()">
-      <ion-avatar item-start class="icon">
-        <ion-img width="60" height="60" src="assets/imgs/welcome.jpg"></ion-img>
-      </ion-avatar>
-      <h2>可乐</h2>
-      <p>有效期：5.16-8.16(2018)</p>
-      <p text-right>已兑换</p>
-    </ion-item>
+    <ng-container *ngFor="let item of transactionList;let i = index;">
+      <ion-item class="list-item" (click)="showDetail(item.id)">
+        <ion-avatar item-start class="icon">
+          <ion-img width="60" height="60" src="assets/imgs/welcome.jpg"></ion-img>
+        </ion-avatar>
+        <h2>{{item.Goods.name}}</h2>
+        <p>有效期至：{{infoList[i].validString}}</p>
+        <p text-right>{{infoList[i].stateString}}</p>
+      </ion-item>
+    </ng-container>
   </ion-list>
 </ion-content>

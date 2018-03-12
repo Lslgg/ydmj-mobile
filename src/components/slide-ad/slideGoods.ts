@@ -15,7 +15,7 @@ export class SlideAdComponent implements OnInit {
     constructor(private apollo: Apollo) { }
 
     ngOnInit() {
-        if (this.type) {            
+        if (this.type) {
             this.getAdList();
         }
     }
@@ -24,16 +24,18 @@ export class SlideAdComponent implements OnInit {
         this.onCard.emit(true);
     }
 
-    getAdList() {        
+    getAdList() {
+        var date = new Date().toISOString();
         const sql = gql`
-          query($type:Json){
-            adList:getAdvertmWhere(advertm:{type:$type}) {
+          query($isValid:Boolean,$type:Json,$startDate:Json,$endDate:Json){
+            adList:getAdvertmWhere(advertm:{isValid:$isValid,type:$type,startDate:$startDate,endDate:$endDate}) {
                 id,Images{path},link
             }
         }`;
         var query: any = {
             query: sql,
-            variables: { type: `{"$eq":"${this.type}"}` },
+            variables: { isValid: true, type: `{"$eq":"${this.type}"}`, startDate: `{"$gte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
+            fetchPolicy: "network-only"
         }
         type ad = Array<{ id: String, Images: { path: String }, link: String }>;
         this.apollo.query<ad>(query).subscribe(({ data }) => {

@@ -13,13 +13,18 @@ import { Apollo } from 'apollo-angular';
 export class ClassifyPage implements OnInit {
 
   sortList: Array<String> = ["综合排序", "销量由高到低", "销量由低到高"];
+
   businessList: Array<{
     id: String, name: String, address: String, phone: String, hour: String,
     brief: String, Images: [{ path: String }], times: Number, score: Number
   }> = [];
+
   pageSize: Number = 2;
+
   pageIndex: Number = 1;
+
   sort: any = null;
+
   search: String = null;
 
   constructor(public navCtrl: NavController,
@@ -29,7 +34,7 @@ export class ClassifyPage implements OnInit {
     this.getBusinessList();
   }
 
-  clickCard(info: String) {
+  clickCard(info: String) {    
     this.navCtrl.push(BusinessPage, {
       id: info,
     });
@@ -55,6 +60,7 @@ export class ClassifyPage implements OnInit {
     var query: any = {
       query: sql,
       variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, business: { name: this.search, isValid: true }, sort: this.sort },
+      fetchPolicy: "network-only"
     }
 
     type business = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: Array<{ path: String }> }>;
@@ -65,7 +71,7 @@ export class ClassifyPage implements OnInit {
           this.businessList.push(data['businessList'][i]);
         }
       }
-    })
+    });
   }
 
   onSort(info: String) {

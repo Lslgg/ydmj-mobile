@@ -8,20 +8,18 @@ import { NavPage } from '../nav/nav';
   selector: 'page-user',
   templateUrl: 'user.html',
 })
-export class UserPage {  
+export class UserPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserPage');
-  }
 
   onClick(info: String) {
-    console.log(info);
-    if (info == '我的兑换') {
-      this.navCtrl.push(ListPage);
+    if (info == '我的兑换' || info == '未兑换' || info == '已兑换' || info == '已过期') {
+      this.navCtrl.push(ListPage, {
+        info: info
+      });
     } else if (info == '常见问题') {
       this.navCtrl.push(NavPage);
     }

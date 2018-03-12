@@ -20,7 +20,7 @@ page-business {
     }
     .detail-card {
       @media screen and (min-width: 0) and (max-width: 767px) {
-        .iimg {
+        .imgbox {
           height: 180px;
           width: 100%;
           img {
@@ -31,7 +31,7 @@ page-business {
         }
       }
       @media screen and(min-width: 768px) and (max-width: 992px) {
-        .iimg {
+        .imgbox {
           height: 210px;
           width: 100%;
           img {
@@ -42,7 +42,7 @@ page-business {
         }
       }
       @media screen and(min-width: 1200px) {
-        .iimg {
+        .imgbox {
           height: 320px;
           width: 100%;
           img {
@@ -60,14 +60,7 @@ page-business {
         .last-p {
           color: #f53d3d;
           border: 0;
-          margin: 15px 0 5px 0; // button {
-          //   display: inline-block;
-          //   vertical-align: middle;
-          //   width:45%;
-          //   .fspan {
-          //     text-align: left !important;
-          //   }
-          // }
+          margin: 15px 0 5px 0; 
         }
       }
     }

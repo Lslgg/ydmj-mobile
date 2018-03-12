@@ -14,10 +14,30 @@ import { Goods } from '../goods/goods';
 export class BusinessPage implements OnInit {
 
   id: String;
+
   business: {
     id: String, name: String, address: String, phone: String, hour: String,
     brief: String, Images: Array<{ path: String }>, times: Number, score: Number
-  } = { id: '', name: '', address: '', phone: '', hour: '', brief: '', Images: [{ path: '' }], times: 0, score: 0 };
+  } = {
+    id: '', name: '', address: '', phone: '', hour: '', brief: '', Images: [{ path: '' }],
+      times: 0, score: 0
+    };
+
+  sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
+
+  goodsList: Array<{
+    id: String, name: String, Business: { name: String }, times: Number,
+    score: Number, Images: { path: String }
+  }> = [];
+
+  pageSize: Number = 2;
+
+  pageIndex: Number = 1;
+
+  sort: any = null;
+
+  search: String = null;
+
   constructor(public navCtrl: NavController, private apollo: Apollo, public navParams: NavParams) {
   }
 
@@ -28,34 +48,32 @@ export class BusinessPage implements OnInit {
   }
 
   getBusiness() {
+
     const sql = gql`
     query($id:String) {
       business:getBusinessById(id:$id) {
         id,name,address,phone,hours,brief,Images{path},times,score          
       }
     }`;
+
     var query: any = {
       query: sql,
-      variables: { $id: this.id }
+      variables: { id: this.id },
+      fetchPolicy: "network-only"
     }
 
-    type business = { name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: { path: String } };
+    type business = {
+      name: String, Business: { id: String, name: String },
+      times: Number, score: Number, Images: { path: String }
+    };
+
     this.apollo.query<business>(query).subscribe(({ data }) => {
-      console.log(data);
       if (data && data['business']) {
         this.business = data['business'];
       }
     });
+
   }
-
-
-
-  sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
-  goodsList: Array<{ id: String, name: String, Business: { name: String }, times: Number, score: Number, Images: { path: String } }> = [];
-  pageSize: Number = 2;
-  pageIndex: Number = 1;
-  sort: any = null;
-  search: String = null;
 
   onGoods(info: String) {
     this.navCtrl.push(Goods, {
@@ -83,6 +101,7 @@ export class BusinessPage implements OnInit {
     var query: any = {
       query: sql,
       variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, goods: { businessId: `{"$eq":"${this.id}"}`, name: this.search, isValid: true }, sort: this.sort },
+      fetchPolicy: "network-only"
     }
 
     type goods = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: { path: String } }>;

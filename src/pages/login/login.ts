@@ -45,7 +45,7 @@ export class LoginPage {
 
     this.apollo.query<{ id: string }>(query).subscribe(({ data }) => {
       if (data.id) {
-        this.navCtrl.push(TabsPage)
+        this.navCtrl.push(TabsPage);
       } else {
         let toast = this.toastCtrl.create({
           message: '用户名或密码错误',
@@ -55,8 +55,7 @@ export class LoginPage {
         });
         toast.present();
       }
-    })
-    // this.navCtrl.push(TabsPage);
+    })    
   }
 
 }

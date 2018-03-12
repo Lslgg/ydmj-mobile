@@ -10,22 +10,31 @@ import { Goods } from '../goods/goods';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private apollo: Apollo) {
-    this.getGoodsList();    
-  }
   sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
-  goodsList: Array<{ id: String, name: String, Business: { name: String }, times: Number, score: Number, Images: { path: String } }> = [];
+
+  goodsList: Array<{
+    id: String, name: String, Business: { name: String },
+
+    times: Number, score: Number, Images: { path: String }
+  }> = [];
+
   pageSize: Number = 2;
+
   pageIndex: Number = 1;
+
   sort: any = null;
+
   search: String = null;
+
+  constructor(public navCtrl: NavController, private apollo: Apollo) {
+    this.getGoodsList();
+  }
 
   onGoods(info: String) {
     this.navCtrl.push(Goods, {
       id: info
     });
   }
-  
 
   getGoodsList() {
 
@@ -46,10 +55,17 @@ export class HomePage {
 
     var query: any = {
       query: sql,
-      variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, goods: { name: this.search, isValid: true }, sort: this.sort },
+      variables: {
+        pageIndex: this.pageIndex, pageSize: this.pageSize,
+        goods: { name: this.search, isValid: true }, sort: this.sort
+      },
+      fetchPolicy: "network-only"
     }
 
-    type goods = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: { path: String } }>;
+    type goods = Array<{
+      name: String, Business: { id: String, name: String },
+      times: Number, score: Number, Images: { path: String }
+    }>;
 
     this.apollo.query<goods>(query).subscribe(({ data }) => {
       if (data && data['goodsList']) {

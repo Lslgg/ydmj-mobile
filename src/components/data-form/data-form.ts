@@ -110,8 +110,7 @@ export class DataFormComponent {
         this.navCtrl.push(this.dataGql.url)
       })
     }
-    
-    console.log(formObj);
+        
     this.onSubmit.emit(formObj);
   }
 
