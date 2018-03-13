@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular/module';
-import { SlideAdComponent } from './slideGoods';
+import { SlideAdComponent } from './slideAd';
 
 
 

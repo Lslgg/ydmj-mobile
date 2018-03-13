@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Apollo } from 'apollo-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 
 
 @IonicPage()
@@ -12,7 +11,7 @@ export class ImagesPage implements OnInit {
     
   imgs: Array<{ path: String }> = [];
 
-  constructor(public navParams: NavParams, private apollo: Apollo) { }
+  constructor(public navParams: NavParams) { }
 
   ngOnInit(): void {
     if (!this.navParams.get('imgs')) return;

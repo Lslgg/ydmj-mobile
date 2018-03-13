@@ -1,12 +1,12 @@
 import { ViewController, NavParams } from "ionic-angular";
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     template: `
       <ion-list>
         <ion-list-header>{{title}}</ion-list-header>
         <ng-container *ngFor="let item of sortList;">
-            <button ion-item (click)="close(item)">{{item}}</button>        
+            <button ion-item (click)="close(item.key)">{{item.value}}</button>        
         </ng-container>        
       </ion-list>
       `,
@@ -19,7 +19,7 @@ import { Component, Output, EventEmitter } from "@angular/core";
 })
 export class SortPopover {
 
-    sortList: Array<String> = [];
+    sortList: Array<{ key: String, value: String }> = [];
     title: String = '排序方式';
 
 

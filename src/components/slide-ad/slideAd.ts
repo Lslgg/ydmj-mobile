@@ -16,7 +16,7 @@ export class SlideAdComponent implements OnInit {
 
     ngOnInit() {
         if (this.type) {
-            this.getAdList();
+            this.getAdList();            
         }
     }
 
@@ -34,12 +34,12 @@ export class SlideAdComponent implements OnInit {
         }`;
         var query: any = {
             query: sql,
-            variables: { isValid: true, type: `{"$eq":"${this.type}"}`, startDate: `{"$gte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
+            variables: { isValid: true, type: `{"$eq":"${this.type}"}`, startDate: `{"$lte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
             fetchPolicy: "network-only"
         }
         type ad = Array<{ id: String, Images: { path: String }, link: String }>;
         this.apollo.query<ad>(query).subscribe(({ data }) => {
-            this.adList = data['adList'];
+            this.adList = data['adList'];            
         })
     }
 }

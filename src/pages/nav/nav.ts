@@ -33,7 +33,7 @@ export class NavPage implements OnInit {
         }`;
         var query: any = {
             query: sql,
-            variables: { isValid: true, startDate: `{"$gte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
+            variables: { isValid: true, startDate: `{"$lte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
             fetchPolicy: "network-only"
         }
 

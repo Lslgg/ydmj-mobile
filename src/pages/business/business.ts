@@ -19,11 +19,11 @@ export class BusinessPage implements OnInit {
     id: String, name: String, address: String, phone: String, hour: String,
     brief: String, Images: Array<{ path: String }>, times: Number, score: Number
   } = {
-    id: '', name: '', address: '', phone: '', hour: '', brief: '', Images: [{ path: '' }],
+      id: '', name: '', address: '', phone: '', hour: '', brief: '', Images: [{ path: '' }],
       times: 0, score: 0
     };
 
-  sortList: Array<String> = ["综合排序", "积分由高到低", "积分由低到高", "销量由高到低", "销量由低到高"];
+  sortList: Array<{ key: String, value: String }> = [];
 
   goodsList: Array<{
     id: String, name: String, Business: { name: String }, times: Number,
@@ -38,6 +38,8 @@ export class BusinessPage implements OnInit {
 
   search: String = null;
 
+  goodsTypeId: String = null;
+
   constructor(public navCtrl: NavController, private apollo: Apollo, public navParams: NavParams) {
   }
 
@@ -45,6 +47,7 @@ export class BusinessPage implements OnInit {
     this.id = this.navParams.get('id');
     this.getGoodsList();
     this.getBusiness();
+    this.getSortList();
   }
 
   getBusiness() {
@@ -87,6 +90,10 @@ export class BusinessPage implements OnInit {
       this.search = '';
     }
 
+    if (!this.goodsTypeId) {
+      this.goodsTypeId = '';
+    }
+
     if (!this.sort) {
       this.sort = { sortIndex: -1 };
     }
@@ -100,7 +107,12 @@ export class BusinessPage implements OnInit {
 
     var query: any = {
       query: sql,
-      variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, goods: { businessId: `{"$eq":"${this.id}"}`, name: this.search, isValid: true }, sort: this.sort },
+      variables: {
+        pageIndex: this.pageIndex, pageSize: this.pageSize, goods: {
+          businessId: `{"$eq":"${this.id}"}`, name: this.search,
+          isValid: true
+        }, sort: this.sort
+      },
       fetchPolicy: "network-only"
     }
 
@@ -116,11 +128,11 @@ export class BusinessPage implements OnInit {
   }
 
   onSort(info: String) {
-    var sort = this.getSortObj(info);
-    this.search = null;
-    this.pageIndex = 1;
-    this.goodsList = [];
-    this.getGoodsList();
+    // this.getSortObj(info);
+    // this.goodsTypeId = info;
+    // this.pageIndex = 1;
+    // this.goodsList = [];
+    // this.getGoodsList();
   }
 
   onSearch(info: String) {
@@ -137,21 +149,35 @@ export class BusinessPage implements OnInit {
   }
 
   getSortObj(info: String) {
-    if (info == "综合排序") {
-      this.sort = { sortIndex: -1 };
+    this.search = info;
+    this.sort = null;
+    this.pageIndex = 1;
+    this.goodsList = [];
+    this.getGoodsList();
+  }
+
+  getSortList() {
+    const sql = gql`query($id:Json){
+      goodsTypeList:getGoodsTypeWhere(goodsType:{businessId:$id}) {
+        id name
+      }
+    }`;
+
+    var query: any = {
+      query: sql,
+      variables: { id: `{"$eq":"${this.id}"}` },
+      fetchPolicy: "network-only"
     }
-    if (info == "积分由高到低") {
-      this.sort = { score: -1 };
-    }
-    if (info == "积分由低到高") {
-      this.sort = { score: 1 };
-    }
-    if (info == "销量由高到低") {
-      this.sort = { times: -1 };
-    }
-    if (info == "销量由低到高") {
-      this.sort = { times: 1 };
-    }
+
+    type goodsType = Array<{ id: String, name: String }>;
+
+    this.apollo.query<goodsType>(query).subscribe(({ data }) => {
+      if (data && data['goodsTypeList']) {
+        for (let i = 0; i < data['goodsTypeList'].length; i++) {
+          this.sortList.push({ key: data['goodsTypeList'][i].id, value: data['goodsTypeList'][i].name });
+        }
+      }
+    })
   }
 
   toImages() {
