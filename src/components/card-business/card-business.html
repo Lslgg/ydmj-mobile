@@ -4,11 +4,11 @@
       <ion-card>
         <ion-card-content (click)="clickCard(item.id)">
           <div>
-              <img src="http://localhost:8080/{{item.Images[0].path}}">
+              <img src="http://122.10.93.137:8080/{{item.Images[0].path}}">
           </div>          
           <ion-row class="bottom">
             <ion-col col-12>
-              <span [style.width]="'100%'" class="title" text-center>{{item.name}}</span>
+              <span class="title" text-center>{{item.name}}</span>
             </ion-col>
             <ion-col>
               <span class="gray">{{item.times}}人兑换</span>

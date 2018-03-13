@@ -59,7 +59,7 @@ export class Goods implements OnInit {
     this.apollo.query<goods>(query).subscribe(({ data }) => {
       Object.assign(this.goods, data['goods']);
       for (let i = 0; i < this.goods.Images.length; i++) {
-        this.dataList.push("http://localhost:8080/" + this.goods.Images[i].path);
+        this.dataList.push("http://122.10.93.137:8080/" + this.goods.Images[i].path);
       }
       this.goods.validTime = parseFloat(this.goods.validTime + '') / 86400000;
     })
