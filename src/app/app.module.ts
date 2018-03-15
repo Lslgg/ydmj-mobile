@@ -18,6 +18,7 @@ import { BusinessModule } from '../pages/business/business.module';
 import { ListPageModule } from '../pages/list/list.module';
 import { NavPageModule } from '../pages/nav/nav.module';
 import { HomeButtonModule } from '../components/home-buttom/homeButton.module';
+import { DetailPageModule } from '../pages/nav/page/detail.module';
 
 
 
@@ -38,7 +39,8 @@ import { HomeButtonModule } from '../components/home-buttom/homeButton.module';
     BusinessModule,
     ListPageModule,
     NavPageModule,
-    HomeButtonModule
+    HomeButtonModule,
+    DetailPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

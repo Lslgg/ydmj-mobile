@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
-    selector: 'home-detail',
+    selector: 'home-details',
     templateUrl: 'detail.html'
 })
-export class Detail implements OnInit {
+export class GoodsDetailPage implements OnInit {
 
     goods: {
         id: String, Business: { name: String, address: String }, GoodsType: { name: String },
@@ -13,7 +14,7 @@ export class Detail implements OnInit {
         name: String, score: Number, ruler: String, explain: String, stock: Number,
         times: Number, validTime: Number
     } = {
-        id: '', Business: { name: '', address: '' }, GoodsType: { name: '' },
+            id: '', Business: { name: '', address: '' }, GoodsType: { name: '' },
             Images: [], name: '', score: 0, ruler: '', explain: '', stock: 0, times: 0, validTime: 0
         };
 

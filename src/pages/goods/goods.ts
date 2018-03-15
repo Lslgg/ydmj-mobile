@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, PopoverController, NavParams, AlertController } from 'ionic-angular';
-import { Detail } from './components/detail';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
 
@@ -65,7 +64,7 @@ export class Goods implements OnInit {
   }
 
   toDetail() {
-    this.navCtrl.push(Detail, {
+    this.navCtrl.push("Detail", {
       goods: this.goods
     });
   }

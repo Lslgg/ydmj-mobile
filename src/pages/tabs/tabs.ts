@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { Tabs } from 'ionic-angular';
+import { Component } from '@angular/core';
 
 
 @Component({

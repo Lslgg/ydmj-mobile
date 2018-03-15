@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { DetailPage } from './page/detail';
+import { NavController, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
+@IonicPage()
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.html',
@@ -19,7 +19,7 @@ export class NavPage implements OnInit {
     }
 
     itemSelected(id: String) {
-        this.navCtrl.push(DetailPage, {
+        this.navCtrl.push("DetailPage", {
             id: id
         });
     }

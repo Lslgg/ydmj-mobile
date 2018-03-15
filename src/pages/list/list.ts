@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavParams } from 'ionic-angular';
+import { AlertController, NavParams, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
+@IonicPage()
 @Component({
     selector: 'app-list',
     templateUrl: './list.html',

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BusinessPage } from '../business/business';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
 
@@ -35,7 +34,7 @@ export class ClassifyPage implements OnInit {
   }
 
   clickCard(info: String) {
-    this.navCtrl.push(BusinessPage, {
+    this.navCtrl.push("BusinessPage", {
       id: info,
     });
   }

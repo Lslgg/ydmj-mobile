@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ImagesPage } from './page/images';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Goods } from '../goods/goods';
 
 
 @IonicPage()
@@ -78,7 +76,7 @@ export class BusinessPage implements OnInit {
   }
 
   onGoods(info: String) {
-    this.navCtrl.push(Goods, {
+    this.navCtrl.push("Goods", {
       id: info
     });
   }
@@ -180,7 +178,7 @@ export class BusinessPage implements OnInit {
   }
 
   toImages() {
-    this.navCtrl.push(ImagesPage, {
+    this.navCtrl.push("ImagesPage", {
       imgs: this.business.Images
     });
   }

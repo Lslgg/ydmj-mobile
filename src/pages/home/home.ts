@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Goods } from '../goods/goods';
+
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -32,7 +32,7 @@ export class HomePage {
 
 
   onGoods(info: String) {
-    this.navCtrl.push(Goods, {
+    this.navCtrl.push("Goods", {
       id: info
     });
   }

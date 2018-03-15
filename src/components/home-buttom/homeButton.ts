@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
+import { App } from 'ionic-angular';
 import { TabsPage } from '../../pages/tabs/tabs';
-import { checkNoChangesNode } from '@angular/core/src/view/view';
 
 @Component({
     selector: 'home-buttom',
