@@ -17,6 +17,8 @@ import { ClassifyPageModule } from '../pages/classify/classify.module';
 import { BusinessModule } from '../pages/business/business.module';
 import { ListPageModule } from '../pages/list/list.module';
 import { NavPageModule } from '../pages/nav/nav.module';
+import { HomeButtonModule } from '../components/home-buttom/homeButton.module';
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { NavPageModule } from '../pages/nav/nav.module';
     ClassifyPageModule,
     BusinessModule,
     ListPageModule,
-    NavPageModule
+    NavPageModule,
+    HomeButtonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

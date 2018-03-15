@@ -66,8 +66,7 @@ export class ListPage implements OnInit {
                 time = date.toLocaleDateString() + date.toLocaleTimeString();
                 let endDate = new Date(data['transaction'].endTime);
                 endTime = endDate.toLocaleDateString() + endDate.toLocaleTimeString();
-                state = this.getState(endDate, new Date(), data['transaction'].state);
-                console.log('show');
+                state = this.getState(endDate, new Date(), data['transaction'].state);                
                 this.showAlert(name, time, endTime, state, code);
             }
         });

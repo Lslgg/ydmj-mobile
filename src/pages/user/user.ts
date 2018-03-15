@@ -9,11 +9,10 @@ import { NavPage } from '../nav/nav';
   templateUrl: 'user.html',
 })
 export class UserPage {
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
 
   onClick(info: String) {
     if (info == '我的兑换' || info == '未兑换' || info == '已兑换' || info == '已过期') {

@@ -5,6 +5,7 @@ import { SearchModule } from '../../components/search-bar/search.module';
 import { CardModule } from '../../components/card/card.module';
 import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
 import { MoreModule } from '../../components/more/more.module';
+import { HomeButtonModule } from '../../components/home-buttom/homeButton.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MoreModule } from '../../components/more/more.module';
     SearchModule,
     CardModule,
     SlideAdModule,
-    MoreModule
+    MoreModule,
+    HomeButtonModule
   ],
   entryComponents: [
     HomePage,

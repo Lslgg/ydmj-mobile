@@ -6,6 +6,7 @@ import { CardModule } from '../../components/card/card.module';
 import { MoreModule } from '../../components/more/more.module';
 import { SlideGoodsModule } from '../../components/slide-goods/slideGoods.module';
 import { ImagesModule } from './page/images.module';
+import { HomeButtonModule } from '../../components/home-buttom/homeButton.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ImagesModule } from './page/images.module';
     CardModule,
     MoreModule,
     SlideGoodsModule,
-    ImagesModule
+    ImagesModule,
+    HomeButtonModule
   ],
 })
 export class BusinessModule { }

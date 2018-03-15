@@ -10,7 +10,6 @@ import { IonicPage, NavParams } from 'ionic-angular';
 export class ImagesPage implements OnInit {
     
   imgs: Array<{ path: String }> = [];
-
   constructor(public navParams: NavParams) { }
 
   ngOnInit(): void {

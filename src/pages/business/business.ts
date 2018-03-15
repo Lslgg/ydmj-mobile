@@ -14,7 +14,6 @@ import { Goods } from '../goods/goods';
 export class BusinessPage implements OnInit {
 
   id: String;
-
   business: {
     id: String, name: String, address: String, phone: String, hour: String,
     brief: String, Images: Array<{ path: String }>, times: Number, score: Number
@@ -26,7 +25,7 @@ export class BusinessPage implements OnInit {
   sortList: Array<{ key: String, value: String }> = [];
 
   goodsList: Array<{
-    id: String, name: String, Business: { name: String }, times: Number,
+    id: String, name: String, Business: { id: String, name: String }, times: Number,
     score: Number, Images: { path: String }
   }> = [];
 
@@ -101,7 +100,7 @@ export class BusinessPage implements OnInit {
     const sql = gql`
       query($pageIndex:Int,$pageSize:Int,$goods:searchGoods,$sort:sortObj){
         goodsList:  getGoodsPageM(pageIndex:$pageIndex,pageSize:$pageSize,goods:$goods,sort:$sort) {
-          id,name,Business{name},times,score, Images{path}
+          id,name,Business{id,name},times,score, Images{path}
         }
       }`;
 

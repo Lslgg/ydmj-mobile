@@ -10,12 +10,11 @@ export class WelcomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-
-  login(){
+  login() {
     this.navCtrl.push("LoginPage")
   }
 
-  signup(){
+  signup() {
     this.navCtrl.push("SignupPage")
   }
 }

@@ -12,9 +12,8 @@ export class HomePage {
 
   sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "积分由高到低", value: "积分由高到低" },
   { key: "积分由低到高", value: "积分由低到高" }, { key: "销量由高到低", value: "销量由高到低" }, { key: "销量由低到高", value: "销量由低到高" }];
-
   goodsList: Array<{
-    id: String, name: String, Business: { name: String },
+    id: String, name: String, Business: { id: String, name: String },
 
     times: Number, score: Number, Images: { path: String }
   }> = [];
@@ -30,6 +29,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private apollo: Apollo) {
     this.getGoodsList();
   }
+
 
   onGoods(info: String) {
     this.navCtrl.push(Goods, {
@@ -50,7 +50,7 @@ export class HomePage {
     const sql = gql`
       query($pageIndex:Int,$pageSize:Int,$goods:searchGoods,$sort:sortObj){
         goodsList:  getGoodsPageM(pageIndex:$pageIndex,pageSize:$pageSize,goods:$goods,sort:$sort) {
-          id,name,Business{name},times,score, Images{path}
+          id,name,Business{id,name},times,score, Images{path}
         }
       }`;
 

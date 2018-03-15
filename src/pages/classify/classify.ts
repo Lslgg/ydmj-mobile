@@ -14,7 +14,6 @@ export class ClassifyPage implements OnInit {
   
   sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "销量由高到低", value: "销量由高到低" },
   { key: "销量由低到高", value: "销量由低到高" }];
-
   businessList: Array<{
     id: String, name: String, address: String, phone: String, hour: String,
     brief: String, Images: [{ path: String }], times: Number, score: Number

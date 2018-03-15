@@ -5,6 +5,7 @@ import { SearchModule } from '../../components/search-bar/search.module';
 import { SlideAdModule } from '../../components/slide-ad/slideAd.module';
 import { CardBusinessModule } from '../../components/card-business/card-business.module';
 import { MoreModule } from '../../components/more/more.module';
+import { HomeButtonModule } from '../../components/home-buttom/homeButton.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MoreModule } from '../../components/more/more.module';
     SearchModule,
     CardBusinessModule,
     SlideAdModule,
-    MoreModule
+    MoreModule,
+    HomeButtonModule
   ],
 })
 export class ClassifyPageModule { }

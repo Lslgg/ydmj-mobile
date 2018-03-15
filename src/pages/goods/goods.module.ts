@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { Goods } from './goods';
 import { Detail } from './components/detail';
 import { SlideGoodsModule } from '../../components/slide-goods/slideGoods.module';
+import { HomeButtonModule } from '../../components/home-buttom/homeButton.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { SlideGoodsModule } from '../../components/slide-goods/slideGoods.module
   ],
   imports: [
     IonicPageModule.forChild(Goods),
-    SlideGoodsModule
+    SlideGoodsModule,
+    HomeButtonModule
   ],  
   entryComponents: [
     Goods,    

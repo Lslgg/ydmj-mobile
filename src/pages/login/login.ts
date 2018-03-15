@@ -13,7 +13,6 @@ import { TabsPage } from '../tabs/tabs'
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
   loginForm: FormGroup = this.fb.group({
     username: ['admin', [Validators.required]],
     password: ['123456', [Validators.required]]
@@ -27,6 +26,7 @@ export class LoginPage {
     private fb: FormBuilder, private apollo: Apollo) {
 
   }
+
 
   login(user: any) {
     const { username, password } = user;

@@ -13,7 +13,6 @@ import { Apollo } from 'apollo-angular';
 export class Goods implements OnInit {
 
   dataList: Array<String> = [];
-
   goods: {
     id: String, Business: { id: String, name: String, address: String },
     GoodsType: { name: String }, Images: Array<{ path: String }>,
@@ -69,6 +68,28 @@ export class Goods implements OnInit {
     this.navCtrl.push(Detail, {
       goods: this.goods
     });
+  }
+
+  showConfirm(name: String, score: Number) {
+    let confirm = this.alertCtrl.create({
+      title: '兑换商品',
+      message: '确定要兑换' + name + '吗？将消耗' + score + '!',
+      buttons: [
+        {
+          text: '取消',
+          handler: () => {
+            return;
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.doTrans();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   showAlert(flag: Boolean) {
