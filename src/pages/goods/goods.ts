@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, PopoverController, NavParams, AlertController } from 'ionic-angular';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
+import { TypeGoods } from '../../components/type/typeGoods';
 
 
 @IonicPage()
@@ -9,19 +10,12 @@ import { Apollo } from 'apollo-angular';
   selector: 'page-goods',
   templateUrl: 'goods.html',
 })
+
 export class Goods implements OnInit {
 
   dataList: Array<String> = [];
-  goods: {
-    id: String, Business: { id: String, name: String, address: String },
-    GoodsType: { name: String }, Images: Array<{ path: String }>,
-    name: String, score: Number, ruler: String, explain: String, stock: Number,
-    times: Number, validTime: Number
-  } =
-    {
-      id: '', Business: { id: '', name: '', address: '' }, GoodsType: { name: '' },
-      Images: [], name: '', score: 0, ruler: '', explain: '', stock: 0, times: 0, validTime: 0
-    };
+
+  goods: TypeGoods= new TypeGoods();
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
     public navParams: NavParams, private apollo: Apollo, public alertCtrl: AlertController) { }
@@ -48,13 +42,8 @@ export class Goods implements OnInit {
       fetchPolicy: "network-only"
     }
 
-    type goods = {
-      id: String, Business: { id: String, name: String, address: String },
-      GoodsType: { name: String }, Images: Array<{ path: String }>, name: String, score: Number,
-      ruler: String, explain: String, stock: Number, times: Number, validTime: Number
-    };
 
-    this.apollo.query<goods>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeGoods>(query).subscribe(({ data }) => {
       Object.assign(this.goods, data['goods']);
       for (let i = 0; i < this.goods.Images.length; i++) {
         this.dataList.push("http://122.10.93.137:8080/" + this.goods.Images[i].path);
@@ -64,8 +53,8 @@ export class Goods implements OnInit {
   }
 
   toDetail() {
-    this.navCtrl.push("Detail", {
-      goods: this.goods
+    this.navCtrl.push("GoodsDetailPage", {
+      id: this.goods.id
     });
   }
 

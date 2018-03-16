@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { TypeAnswer } from '../../components/type/typeAnswer';
 
 @IonicPage()
 @Component({
@@ -36,9 +37,8 @@ export class NavPage implements OnInit {
             variables: { isValid: true, startDate: `{"$lte":"${date}"}`, endDate: `{"$gt":"${date}"}` },
             fetchPolicy: "network-only"
         }
-
-        type answer = { id: String, name: String };
-        this.apollo.query<answer>(query).subscribe(({ data }) => {
+        
+        this.apollo.query<TypeAnswer>(query).subscribe(({ data }) => {
             this.answerList = data['answerList'];
         });
     }

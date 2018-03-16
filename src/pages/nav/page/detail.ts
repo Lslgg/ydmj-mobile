@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { TypeAnswer } from '../../../components/type/typeAnswer';
 
 @IonicPage()
 @Component({
@@ -32,9 +33,8 @@ export class DetailPage implements OnInit {
             variables: { id: this.id },
             fetchPolicy: "network-only"
         }
-
-        type answer = { id: String, name: String, content: String };
-        this.apollo.query<answer>(query).subscribe(({ data }) => {
+        
+        this.apollo.query<TypeAnswer>(query).subscribe(({ data }) => {
             if (data && data['answer']) {
                 Object.assign(this.answer, data['answer']);
             }

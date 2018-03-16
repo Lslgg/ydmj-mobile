@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GoodsDetailPage } from './detail';
+import { HomeButtonModule } from '../../../components/home-buttom/homeButton.module';
+import { GoodsDetailPage } from './goodsDetail';
 
 
 @NgModule({
@@ -8,9 +9,10 @@ import { GoodsDetailPage } from './detail';
     GoodsDetailPage
   ],
   imports: [
-    IonicPageModule.forChild(GoodsDetailPage)
+    IonicPageModule.forChild(GoodsDetailPage),
+    HomeButtonModule
   ],
-  entryComponents: [
+  exports:[
     GoodsDetailPage
   ]
 })

@@ -2,22 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavParams, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { TypeTransaction } from '../../components/type/TypeTransaction';
 
 @IonicPage()
 @Component({
     selector: 'app-list',
-    templateUrl: './list.html',
-    // styleUrls: ['./list.scss']
+    templateUrl: './list.html',    
 })
 export class ListPage implements OnInit {
 
     info: String;
 
-    transactionList: Array<{
-        id: String, code: String, Goods: { name: String },
-        Business: { name: String }, User: { username: String }, state: Number, endTime: Date,
-        createAt: Date
-    }> = [];
+    transactionList: Array<TypeTransaction> = [];
 
     transaction: {
         id: String, code: String, Goods: { name: String }, Business: { name: String },
@@ -99,9 +95,8 @@ export class ListPage implements OnInit {
             variables: { pageIndex: 1, pageSize: 10, transaction: obj },
             fetchPolicy: "network-only"
         }
-
-        type transaction = Array<{ id: String, code: String, Goods: { name: String }, Business: { name: String }, User: { username: String }, state: Number, endTime: Date, createAt: Date }>;
-        this.apollo.query<transaction>(query).subscribe(({ data }) => {
+        
+        this.apollo.query<TypeTransaction>(query).subscribe(({ data }) => {
             if (data && data['transactionList']) {
                 for (let i = 0; i < data['transactionList'].length; i++) {
                     this.infoList.push({ validString: "加载中", stateString: "加载中" });

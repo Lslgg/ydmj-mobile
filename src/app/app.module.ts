@@ -19,6 +19,7 @@ import { ListPageModule } from '../pages/list/list.module';
 import { NavPageModule } from '../pages/nav/nav.module';
 import { HomeButtonModule } from '../components/home-buttom/homeButton.module';
 import { DetailPageModule } from '../pages/nav/page/detail.module';
+import { GoodsDetailPageModule } from '../pages/goods/page/goodsDetail.module';
 
 
 
@@ -41,6 +42,7 @@ import { DetailPageModule } from '../pages/nav/page/detail.module';
     NavPageModule,
     HomeButtonModule,
     DetailPageModule,
+    GoodsDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

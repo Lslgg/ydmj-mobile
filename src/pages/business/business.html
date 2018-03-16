@@ -9,7 +9,7 @@
       <ion-grid no-padding>
         <ion-row>
           <ion-col>
-            <home-search [sortList]="sortList" (onSort)="onSort($event)" (onSearch)="onSearch($event)"></home-search>
+            <home-search title="商品类别" [sortList]="sortList" (onSort)="onSort($event)" (onSearch)="onSearch($event)"></home-search>
             <home-card [dataList]="goodsList" (onCard)="onGoods($event)"></home-card>
           </ion-col>
         </ion-row>
@@ -26,7 +26,9 @@
     </ion-header>
     <ion-content no-padding>
       <ion-card class="detail-card">
-        <div class="imgbox" ><img src="http://122.10.93.137:8080/{{business.Images[0].path}}" /></div>
+        <div class="imgbox">
+          <img *ngIf="business.Images" src="http://122.10.93.137:8080/{{business.Images[0].path}}" />
+        </div>
         <ion-card-content text-left class="content">
           <ion-card-title text-center>
             {{business.name}}

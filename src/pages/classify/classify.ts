@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
+import { TypeBusiness } from '../../components/type/typeBusiness';
 
 
 @IonicPage()
@@ -13,10 +14,7 @@ export class ClassifyPage implements OnInit {
   
   sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "销量由高到低", value: "销量由高到低" },
   { key: "销量由低到高", value: "销量由低到高" }];
-  businessList: Array<{
-    id: String, name: String, address: String, phone: String, hour: String,
-    brief: String, Images: [{ path: String }], times: Number, score: Number
-  }> = [];
+  businessList: Array<TypeBusiness> = [];
 
   pageSize: Number = 2;
 
@@ -60,11 +58,9 @@ export class ClassifyPage implements OnInit {
       query: sql,
       variables: { pageIndex: this.pageIndex, pageSize: this.pageSize, business: { name: this.search, isValid: true }, sort: this.sort },
       fetchPolicy: "network-only"
-    }
+    }   
 
-    type business = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: Array<{ path: String }> }>;
-
-    this.apollo.query<business>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeBusiness>(query).subscribe(({ data }) => {
       if (data && data['businessList']) {
         for (let i = 0; i < data['businessList'].length; i++) {
           this.businessList.push(data['businessList'][i]);

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-
+import { TypeBusiness } from '../../components/type/typeBusiness';
+import { TypeGoods } from '../../components/type/typeGoods';
+import { TypeGoodsType } from '../../components/type/typeGoodsType';
 
 @IonicPage()
 @Component({
@@ -12,26 +14,17 @@ import gql from 'graphql-tag';
 export class BusinessPage implements OnInit {
 
   id: String;
-  business: {
-    id: String, name: String, address: String, phone: String, hour: String,
-    brief: String, Images: Array<{ path: String }>, times: Number, score: Number
-  } = {
-      id: '', name: '', address: '', phone: '', hour: '', brief: '', Images: [{ path: '' }],
-      times: 0, score: 0
-    };
+  business: TypeBusiness = new TypeBusiness();
 
   sortList: Array<{ key: String, value: String }> = [];
 
-  goodsList: Array<{
-    id: String, name: String, Business: { id: String, name: String }, times: Number,
-    score: Number, Images: { path: String }
-  }> = [];
+  goodsList: Array<TypeGoods> = [];
 
   pageSize: Number = 2;
 
   pageIndex: Number = 1;
 
-  sort: any = null;
+  sort: any = { sortIndex: -1 };
 
   search: String = null;
 
@@ -52,7 +45,7 @@ export class BusinessPage implements OnInit {
     const sql = gql`
     query($id:String) {
       business:getBusinessById(id:$id) {
-        id,name,address,phone,hours,brief,Images{path},times,score          
+        id,name,address,phone,hours,brief,Images{path},times,score        
       }
     }`;
 
@@ -62,12 +55,7 @@ export class BusinessPage implements OnInit {
       fetchPolicy: "network-only"
     }
 
-    type business = {
-      name: String, Business: { id: String, name: String },
-      times: Number, score: Number, Images: { path: String }
-    };
-
-    this.apollo.query<business>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeBusiness>(query).subscribe(({ data }) => {
       if (data && data['business']) {
         this.business = data['business'];
       }
@@ -87,35 +75,38 @@ export class BusinessPage implements OnInit {
       this.search = '';
     }
 
-    if (!this.goodsTypeId) {
-      this.goodsTypeId = '';
-    }
-
-    if (!this.sort) {
-      this.sort = { sortIndex: -1 };
-    }
-
     const sql = gql`
       query($pageIndex:Int,$pageSize:Int,$goods:searchGoods,$sort:sortObj){
         goodsList:  getGoodsPageM(pageIndex:$pageIndex,pageSize:$pageSize,goods:$goods,sort:$sort) {
           id,name,Business{id,name},times,score, Images{path}
         }
       }`;
-
-    var query: any = {
-      query: sql,
-      variables: {
-        pageIndex: this.pageIndex, pageSize: this.pageSize, goods: {
-          businessId: `{"$eq":"${this.id}"}`, name: this.search,
-          isValid: true
-        }, sort: this.sort
-      },
-      fetchPolicy: "network-only"
+    var query: any
+    if (!this.goodsTypeId) {
+      query = {
+        query: sql,
+        variables: {
+          pageIndex: this.pageIndex, pageSize: this.pageSize, goods: {
+            businessId: `{"$eq":"${this.id}"}`, name: this.search,
+            isValid: true
+          }, sort: this.sort
+        },
+        fetchPolicy: "network-only"
+      }
+    } else {
+      query = {
+        query: sql,
+        variables: {
+          pageIndex: this.pageIndex, pageSize: this.pageSize, goods: {
+            businessId: `{"$eq":"${this.id}"}`, name: this.search,
+            isValid: true, goodsTypeId: `{"$eq":"${this.goodsTypeId}"}`
+          }, sort: this.sort
+        },
+        fetchPolicy: "network-only"
+      }
     }
 
-    type goods = Array<{ name: String, Business: { id: String, name: String }, times: Number, score: Number, Images: { path: String } }>;
-
-    this.apollo.query<goods>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeGoods>(query).subscribe(({ data }) => {
       if (data && data['goodsList']) {
         for (let i = 0; i < data['goodsList'].length; i++) {
           this.goodsList.push(data['goodsList'][i]);
@@ -126,15 +117,16 @@ export class BusinessPage implements OnInit {
 
   onSort(info: String) {
     // this.getSortObj(info);
-    // this.goodsTypeId = info;
-    // this.pageIndex = 1;
-    // this.goodsList = [];
-    // this.getGoodsList();
+    this.goodsTypeId = info;
+    this.search = null;
+    this.pageIndex = 1;
+    this.goodsList = [];
+    this.getGoodsList();
   }
 
   onSearch(info: String) {
     this.search = info;
-    this.sort = null;
+    this.goodsTypeId = null;
     this.pageIndex = 1;
     this.goodsList = [];
     this.getGoodsList();
@@ -142,14 +134,6 @@ export class BusinessPage implements OnInit {
 
   onMore() {
     this.pageIndex = parseInt(this.pageIndex + '') + 1;
-    this.getGoodsList();
-  }
-
-  getSortObj(info: String) {
-    this.search = info;
-    this.sort = null;
-    this.pageIndex = 1;
-    this.goodsList = [];
     this.getGoodsList();
   }
 
@@ -166,9 +150,7 @@ export class BusinessPage implements OnInit {
       fetchPolicy: "network-only"
     }
 
-    type goodsType = Array<{ id: String, name: String }>;
-
-    this.apollo.query<goodsType>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeGoodsType>(query).subscribe(({ data }) => {
       if (data && data['goodsTypeList']) {
         for (let i = 0; i < data['goodsTypeList'].length; i++) {
           this.sortList.push({ key: data['goodsTypeList'][i].id, value: data['goodsTypeList'][i].name });

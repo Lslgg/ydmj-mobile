@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { TypeGoods } from '../../components/type/typeGoods';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,7 @@ export class HomePage {
 
   sortList: Array<{ key: String, value: String }> = [{ key: "综合排序", value: "综合排序" }, { key: "积分由高到低", value: "积分由高到低" },
   { key: "积分由低到高", value: "积分由低到高" }, { key: "销量由高到低", value: "销量由高到低" }, { key: "销量由低到高", value: "销量由低到高" }];
-  goodsList: Array<{
-    id: String, name: String, Business: { id: String, name: String },
-
-    times: Number, score: Number, Images: { path: String }
-  }> = [];
+  goodsList: Array<TypeGoods> = [];
 
   pageSize: Number = 2;
 
@@ -63,12 +60,7 @@ export class HomePage {
       fetchPolicy: "network-only"
     }
 
-    type goods = Array<{
-      name: String, Business: { id: String, name: String },
-      times: Number, score: Number, Images: { path: String }
-    }>;
-
-    this.apollo.query<goods>(query).subscribe(({ data }) => {
+    this.apollo.query<TypeGoods>(query).subscribe(({ data }) => {
       if (data && data['goodsList']) {
         for (let i = 0; i < data['goodsList'].length; i++) {
           this.goodsList.push(data['goodsList'][i]);
