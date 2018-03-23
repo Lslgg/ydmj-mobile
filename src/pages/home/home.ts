@@ -25,15 +25,15 @@ export class HomePage {
 
   search: String = null;
 
-  dataServer:String = Envioronment.dataServer;
+  dataServer: String = Envioronment.dataServer;
 
   constructor(public navCtrl: NavController, private apollo: Apollo, public appCtrl: App) {
 
     let tabbar = document.getElementsByClassName('tabbar');
-    if(!tabbar || tabbar.length<=0) {
+    if (!tabbar || tabbar.length <= 0) {
       this.appCtrl.getRootNav().push(TabsPage);
     }
-    
+
     this.getGoodsList();
   }
 

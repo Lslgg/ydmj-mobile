@@ -1,15 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import gql from 'graphql-tag';
+import { Apollo } from 'apollo-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
 })
-export class UserPage {
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class UserPage implements OnInit {
 
+
+  nickname: String = '';
+  headimgurl: String = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apollo: Apollo) { }
+
+  ngOnInit(): void {
+    this.getUserInfo();
+  }
+
+  getUserInfo() {
+    const sql = gql`query{ 
+      user:currentUser {
+        id nickname headimgurl
+      }
+    }`;
+
+    var query: any = {
+      query: sql,
+      // variables: {
+      //   pageIndex: this.pageIndex, pageSize: this.pageSize,
+      //   goods: { name: this.search, isValid: true }, sort: this.sort
+      // },
+      fetchPolicy: "network-only"
+    }
+
+    this.apollo.query<any>(query).subscribe(({ data }) => {      
+      if (data && data.user) {
+        this.nickname = data.user.nickname;
+        this.headimgurl = data.user.headimgurl;
+      }
+    })
   }
 
   onClick(info: String) {
