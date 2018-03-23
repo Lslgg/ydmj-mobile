@@ -11,8 +11,9 @@ import { Apollo } from 'apollo-angular';
 export class UserPage implements OnInit {
 
 
-  nickname: String = '';
-  headimgurl: String = '';
+  nickname: String = null;
+  headimgurl: String = null;
+  score: String = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apollo: Apollo) { }
 
@@ -29,17 +30,13 @@ export class UserPage implements OnInit {
 
     var query: any = {
       query: sql,
-      // variables: {
-      //   pageIndex: this.pageIndex, pageSize: this.pageSize,
-      //   goods: { name: this.search, isValid: true }, sort: this.sort
-      // },
       fetchPolicy: "network-only"
     }
 
-    this.apollo.query<any>(query).subscribe(({ data }) => {      
-      if (data && data.user) {
-        this.nickname = data.user.nickname;
-        this.headimgurl = data.user.headimgurl;
+    this.apollo.query<any>(query).subscribe(({ data }) => {
+      if (data && data['user']) {
+        this.nickname = data['user']['nickname'];
+        this.headimgurl = data['user']['headimgurl'];
       }
     })
   }

@@ -1,7 +1,7 @@
 <ion-content no-padding class="user-center">
   <ion-grid no-padding>
 
-    <user-card></user-card>
+    <user-card [headimgurl]="headimgurl" [nickname]="nickname" [score]="score"></user-card>
 
     <user-order [iconName]="'heart'" [textCenter]="'我的兑换'" [textRight]="'查看全部 》'" (clickBox)="onClick($event)"></user-order>
 
