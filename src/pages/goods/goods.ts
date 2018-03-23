@@ -3,6 +3,7 @@ import { IonicPage, NavController, PopoverController, NavParams, AlertController
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
 import { TypeGoods } from '../../components/type/typeGoods';
+import { Envioronment } from '../../common/envioronment';
 
 
 @IonicPage()
@@ -16,6 +17,8 @@ export class Goods implements OnInit {
   dataList: Array<String> = [];
 
   goods: TypeGoods= new TypeGoods();
+
+  dataServer:String = Envioronment.dataServer;
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
     public navParams: NavParams, private apollo: Apollo, public alertCtrl: AlertController) { }
@@ -46,7 +49,7 @@ export class Goods implements OnInit {
     this.apollo.query<TypeGoods>(query).subscribe(({ data }) => {
       Object.assign(this.goods, data['goods']);
       for (let i = 0; i < this.goods.Images.length; i++) {
-        this.dataList.push("http://122.10.93.137:8080/" + this.goods.Images[i].path);
+        this.dataList.push(Envioronment.dataServer+"/" + this.goods.Images[i].path);
       }
       this.goods.validTime = parseFloat(this.goods.validTime + '') / 86400000;
     })
@@ -136,10 +139,11 @@ export class Goods implements OnInit {
 
     return new Promise<String>((reslove, reject) => {
       this.apollo.query<{ id: String }>(query).subscribe(({ data }) => {
+        console.log(data);
         if (!data || !data['user']) {
           reslove(null);
           return;
-        }
+        }        
         reslove(data['user'].id);
         return;
       })

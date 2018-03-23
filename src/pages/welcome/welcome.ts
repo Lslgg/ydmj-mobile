@@ -7,8 +7,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams) { }
 
   login() {
     this.navCtrl.push("LoginPage")
@@ -16,5 +16,10 @@ export class WelcomePage {
 
   signup() {
     this.navCtrl.push("SignupPage")
+  }
+
+  wxlogin() {
+    var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7b80c3dba5d880b6&redirect_uri=http%3a%2f%2fkk11.ms0564.com%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+    window.location.href = url;
   }
 }

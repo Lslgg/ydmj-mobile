@@ -4,7 +4,7 @@
       <ng-container *ngFor="let item of adList">
         <ion-slide>
           <div>
-            <img src="http://122.10.93.137:8080/{{item.Images[0].path}}" alt="pic">
+            <img src="{{dataServer}}/{{item.Images[0].path}}" alt="pic">
           </div>
         </ion-slide>
       </ng-container>

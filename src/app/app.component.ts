@@ -19,11 +19,11 @@ export class MyApp {
 
     platform.ready().then(() => splashScreen.hide());
 
-    const grqphqlUrl = "http://122.10.93.137:8080";
-    // const grqphqlUrl = "http://localhost:8080";
+    // const grqphqlUrl = "http://211.149.219.127:8070/graphql";
+    const grqphqlUrl = "http://kk11.ms0564.com/dataserver";
 
     apollo.create({
-      link: createUploadLink({ uri: `${grqphqlUrl}/graphql`, credentials: "include" }),
+      link: createUploadLink({ uri: `${grqphqlUrl}`, credentials: "include" }),
       cache: new InMemoryCache()
     });
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import gql from 'graphql-tag';
@@ -23,8 +23,7 @@ export class LoginPage {
   }
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController,
-    private fb: FormBuilder, private apollo: Apollo) {
-
+    private fb: FormBuilder, private apollo: Apollo, public navParams: NavParams) {    
   }
 
 
@@ -55,7 +54,7 @@ export class LoginPage {
         });
         toast.present();
       }
-    })    
+    })
   }
 
 }

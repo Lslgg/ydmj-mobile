@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Envioronment } from '../../common/envioronment';
 
 @Component({
     selector: 'home-slide-ad',
@@ -10,6 +11,7 @@ export class SlideAdComponent implements OnInit {
 
     @Input() type: String = '';
     @Output() onCard = new EventEmitter<boolean>();
+    dataServer:String = Envioronment.dataServer;
     adList: Array<{ id: String, Images: { path: String }, link: String }> = [];
 
     constructor(private apollo: Apollo) { }

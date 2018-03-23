@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { TypeBusiness } from '../../components/type/typeBusiness';
 import { TypeGoods } from '../../components/type/typeGoods';
 import { TypeGoodsType } from '../../components/type/typeGoodsType';
+import { Envioronment } from '../../common/envioronment';
 
 @IonicPage()
 @Component({
@@ -29,6 +30,8 @@ export class BusinessPage implements OnInit {
   search: String = null;
 
   goodsTypeId: String = null;
+
+  dataServer:String = Envioronment.dataServer;
 
   constructor(public navCtrl: NavController, private apollo: Apollo, public navParams: NavParams) {
   }

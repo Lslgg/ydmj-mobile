@@ -7,8 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <data-form [formInfo]="loginForm" [dataGql]="loginGql" [isAuto]="false" 
-      (onSubmit)="login($event)" butTitle="登录">
+  <data-form [formInfo]="loginForm" [dataGql]="loginGql" [isAuto]="false" (onSubmit)="login($event)" butTitle="登录">
     <fm-item name="username" title="用户名" verify="required">
       <fm-verify></fm-verify>
     </fm-item>

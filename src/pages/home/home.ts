@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, App } from 'ionic-angular';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { TypeGoods } from '../../components/type/typeGoods';
+import { Envioronment } from '../../common/envioronment';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
@@ -23,7 +25,15 @@ export class HomePage {
 
   search: String = null;
 
-  constructor(public navCtrl: NavController, private apollo: Apollo) {
+  dataServer:String = Envioronment.dataServer;
+
+  constructor(public navCtrl: NavController, private apollo: Apollo, public appCtrl: App) {
+
+    let tabbar = document.getElementsByClassName('tabbar');
+    if(!tabbar || tabbar.length<=0) {
+      this.appCtrl.getRootNav().push(TabsPage);
+    }
+    
     this.getGoodsList();
   }
 

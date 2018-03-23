@@ -4,8 +4,8 @@
       <ion-card>
         <ion-card-content (click)="clickCard(item.id)">
           <div>
-              <img src="http://122.10.93.137:8080/{{item.Images[0].path}}">
-          </div>          
+            <img src="{{dataServer}}/{{item.Images[0].path}}">
+          </div>
           <ion-row class="bottom">
             <ion-col col-12>
               <span class="title" text-center>{{item.name}}</span>

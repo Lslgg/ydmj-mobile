@@ -27,7 +27,7 @@
     <ion-content no-padding>
       <ion-card class="detail-card">
         <div class="imgbox">
-          <img *ngIf="business.Images" src="http://122.10.93.137:8080/{{business.Images[0].path}}" />
+          <img *ngIf="business.Images" src="{{dataServer}}/{{business.Images[0].path}}" />
         </div>
         <ion-card-content text-left class="content">
           <ion-card-title text-center>
