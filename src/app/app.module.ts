@@ -33,7 +33,9 @@ import { GoodsDetailPageModule } from '../pages/goods/page/goodsDetail.module';
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      cache: false
+    }),
     HomePageModule,
     GoodsModule,
     ClassifyPageModule,
