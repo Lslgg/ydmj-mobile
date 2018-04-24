@@ -11,9 +11,9 @@ import { Apollo } from 'apollo-angular';
 export class UserPage implements OnInit {
 
 
-  nickname: String = null;
-  headimgurl: String = null;
-  score: String = null;
+  nickname: String = '';
+  headimgurl: String = '';
+  score: String = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apollo: Apollo) { }
 

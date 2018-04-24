@@ -19,7 +19,7 @@ export class WelcomePage {
   }
 
   wxlogin() {
-    var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7b80c3dba5d880b6&redirect_uri=http%3a%2f%2fkk11.ms0564.com%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+    var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7b80c3dba5d880b6&redirect_uri=http%3a%2f%2fmall.ydxxba.com%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
     window.location.href = url;
   }
 }

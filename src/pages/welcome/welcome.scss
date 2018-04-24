@@ -1,10 +1,43 @@
 page-welcome {
-    h1{
+    h1 {
         font-size: 52px;
-        margin-top:50px;
+        margin-top: 50px;
     }
-
-    .marginTop{
+    .marginTop {
         margin-top: 100px;
+    }
+    .icon-row {
+        // text-align: center;
+        margin-top: 15px;
+        padding-left: 35%;
+        .wx-box {
+            cursor: pointer;
+            &:hover {
+                a {
+                    text-decoration: underline;
+                }
+            }
+            &:active {
+                a {
+                    text-decoration: underline;
+                }
+            }
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                color: #85da88;
+                font-size: 30px;
+                border: 1px solid #eee;
+                border-radius: 50%;
+                padding: 5px;
+            }
+            a {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 5px;
+                text-decoration: none;
+                color: #333;
+            }
+        }
     }
 }
